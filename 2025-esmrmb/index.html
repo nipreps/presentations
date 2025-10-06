@@ -69,7 +69,7 @@ layout: true
 .perma-sidebar[
 <p class="rotate">
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
-  <span style="padding-left: 10px; font-weight: 600;">Preprocessing & pipelines (2.10.2025)</span>
+  <span style="padding-left: 10px; font-weight: 600;">ESMRMB Workshop — Preprocessing (Oct 8<sup>th</sup>, 2025)</span>
 </p>
 ]
 
@@ -288,23 +288,251 @@ Thảo Nguyễn is a 2nd year Ph.D. student in Lyon. She's very committed and lo
 
 ---
 
+<br />
+
+.boxed-content[
+<iframe src='https://wall.sli.do/event/jagJJcgjPAgM28UD1oXaAe?section=34a14fc7-37be-47c4-ba62-4221d4682ddc' style="width: 100%; height: 550px; border: 0"></iframe>
+]
+
+---
+counter: false
+
+.section-mark.center[
 # Objectives
+]
+
+
+???
+
+---
+class: stepwise-svg
+
+<br />
 <br />
 
 .boxed-content.larger.no-bullet[
-* .large[<i class="fa-solid fa-circle-right"></i> Connect **preprocessing** to **data flows**]
+* .step-1.large[<i class="fa-solid fa-circle-right"></i> Connect **preprocessing** to **data flows**]
 
 
-* .large[<i class="fa-solid fa-circle-right"></i> Adopt a **BIDS-first foundation** for I/O]
+* .step-2.large[<i class="fa-solid fa-circle-right"></i> Adopt a **BIDS-first foundation** for I/O]
 
-* .large[<i class="fa-solid fa-circle-right"></i> Survey what’s **available** and spot the **gaps**]
 
-* .large[<i class="fa-solid fa-circle-right"></i> Build a minimal **dMRI preprocessing workflow** together]
+* .step-3.large[<i class="fa-solid fa-circle-right"></i> Survey what’s **available** and spot the **gaps**]
 
-* .large[<i class="fa-solid fa-circle-right"></i> Establish a **collaborative framework** & tooling]
 
-* .large[<i class="fa-solid fa-circle-right"></i> Strengthen **reproducibility** and **scaling**]
+* .step-4.large[<i class="fa-solid fa-circle-right"></i> Build a minimal **dMRI preprocessing workflow** together]
+
+
+* .step-5.large[<i class="fa-solid fa-circle-right"></i> Establish a **collaborative framework** & tooling]
+
+
+* .step-6.large[<i class="fa-solid fa-circle-right"></i> Strengthen **reproducibility** and **scaling**]
 ]
+
+---
+counter: false
+
+.section-mark.center[
+# Introduction
+
+## Preprocessing & pipelines
+]
+
+
+???
+
+
+---
+
+# The research workflow of connectivity analyses
+
+.boxed-content[
+<object type="image/svg+xml" data="../assets/neuroimaging-workflow-large.svg" style="width: 100%; padding-top: 20pt;"></object>
+
+.center[
+[Esteban et al., (2020)](http://doi.org/10.1038/s41596-020-0327-3);
+[Niso et al., (2022)](https://doi.org/10.1016/j.neuroimage.2022.119623)
+]
+]
+
+???
+
+In broad strokes, this is the MRI-based connectivity analysis pipeline.
+
+Interestingly, it looks like any machine learning pipeline: we acquire data, perform quality control, preprocess it, define features, and then apply statistical modeling to extract insights.
+
+For a deeper dive into the details of the neuroimaging worflow, I've participated in several efforts such as the two references given below.
+
+---
+count:false
+
+# The research workflow of connectivity analyses
+
+.boxed-content[
+<object type="image/svg+xml" data="../assets/neuroimaging-workflow-1.svg" style="width: 100%; padding-top: 20pt;"></object>
+
+.center[
+[Esteban et al., (2017)](https://doi.org/10.1371/journal.pone.0184661);
+[Provins et al., (2023)](https://doi.org/10.3389/fnimg.2022.1073734); <br />
+[Provins et al., (2025)](https://doi.org/10.1371/journal.pbio.3003149)
+[Hagen et al., (2025, *accepted*)](https://doi.org/10.1101/2024.10.21.619532)
+]
+<br />
+
+.no-bullet[
+* .larger[<i class="fa-solid fa-clipboard-list"></i> Run the **MRI experiment** following Standard Operating Procedures (SOPs)]
+
+* <i class="fa-solid fa-folder-tree"></i> .larger[**Standardized data structure** (BIDS—Brain Imaging Data Structure)]
+
+* .larger[<i class="fa-solid fa-square-check"></i> **QA/QC** (Quality assurance / control)]
+
+]
+
+]
+
+???
+
+The pipeline starts with data acquisition, management and quality assurance and control (QA/QC).
+
+My early work on QA/QC applied machine learning to automatically assess MRI images of the brain, and raised awareness over issues like “site effects”—where data from different scanners or labs can systematically vary, much like “batch effects” in genomics.
+
+One key principle in AI is that models are only as good as their data and neuroimaging is no exception.
+
+This is why my group and I have been deeply involved in BIDS, produced version-controlled, machine-readable standard operating procedures, developed comprehensive QA/QC protocols and created ready-to-use applications to detect suboptimal data early.
+
+---
+count:false
+
+# The research workflow of connectivity analyses
+
+.boxed-content[
+<object type="image/svg+xml" data="../assets/neuroimaging-workflow-2.svg" style="width: 100%; padding-top: 20pt;"></object>
+
+.center[
+[Esteban et al., (2019)](https://doi.org/10.1038/s41592-018-0235-4);
+[Ciric et al., (2022)](https://doi.org/10.1038/s41592-022-01681-2);
+[Adebimpe et al., (2022)](https://doi.org/10.1038/s41592-022-01458-7)
+]
+<br />
+
+.no-bullet[
+* .larger[<i class="fa-solid fa-smog"></i> Detection of **nuisance sources**]
+
+* .larger[<i class="fa-solid fa-magnifying-glass-location"></i> Spatiotemporal **location** of signals]
+
+* .larger[<i class="fa-solid fa-location-crosshairs"></i> Definition of **brain units** of analysis (regions)]
+
+]
+]
+
+???
+
+Next in the pipeline is preprocessing, which transforms raw data into something models can reliably interpret.
+
+For example, it identifies signals of no interest for their cleaning or accounting within modeling.
+
+In neuroimaging, preprocessing also deals with accurately locating signals and objects in space and time, and often the definition of relevant brain regions that focus the analysis.
+
+A decade ago, we might have called it “feature engineering.”
+
+Regardless of the term, it’s crucial: “preprocessing” is now a keyword in job posts at major players like Anthropic, DeepMind, and OpenAI.
+
+---
+
+# fMRIPrep: despite minimal, a complex workflow
+
+.boxed-content.center[
+<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
+]
+
+???
+
+Here I'm showing a very much simplified overview of fMRIPrep's design.
+
+Despite it being just "minimal" preprocessing and just one step of the pipeline, its complexity is evident.
+
+Rather than delving into each of these steps, I'll just say that there's a current need to update and improve computer vision algorithms and approaches (segmentation, image registration, dimensionality reduction, etc.) with AI/ML all across the dataflow.
+
+---
+count:false
+class: stepwise-svg
+
+# fMRIPrep: despite minimal, a complex workflow
+
+.boxed-content.center[
+<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
+]
+
+???
+
+---
+
+# fMRIPrep: generalizing further
+
+.boxed-content.center[
+<img src="https://github.com/oesteban/fmriprep/raw/f4c7a9804be26c912b24ef4dccba54bdd72fa1fd/docs/_static/fmriprep-21.0.0.svg" style="width: 100%; padding-top: 20pt" />
+
+]
+
+???
+
+https://www.templateflow.org/assets/templateflow_fig-birdsview.png
+
+---
+
+# TemplateFlow: FAIR access to templates
+
+.boxed-content.center[
+<img src="https://www.templateflow.org/assets/templateflow_fig-birdsview.png" style="width: 70%; padding-top: 10pt" />
+
+]
+
+???
+
+---
+
+# The research workflow of connectivity analyses
+
+.boxed-content[
+<object type="image/svg+xml" data="../assets/neuroimaging-workflow-3.svg" style="width: 100%; padding-top: 20pt;"></object>
+
+.center[
+[Thompson et al., (2021, *under review*)](https://doi.org/10.1101/2021.01.16.426941);
+[Rodrigue et al., (2021)](https://doi.org/10.1016/j.bpsc.2020.12.002);
+[Li et al., (2024)](https://doi.org/10.1038/s41562-024-01942-4)
+]
+]
+
+.pull-right[
+<img src="../assets/matrix-fc.png" alt="matrix-fc" style="width: 20%" />
+<br />
+**Functional Connectivity (FC)**
+<br />
+.gray-text[Synchronized BOLD co-variation between brain regions]
+]
+
+.pull-left.align-right[
+<img src="../assets/matrix-sc.png" alt="matrix-fc" style="width: 20%" />
+<br />
+**Structural Connectivity (SC)**
+<br />
+.gray-text[Tracked water diffusion pathways between brain regions]
+
+]
+
+???
+
+Once data are ready for analysis, we formalize connectivity as undirected acyclic graphs, represented with symmetric matrices.
+
+In the case of structural connectivity, we use diffusion MRI to track pathways of white-matter bundles connecting brain regions.
+
+For functional connectivity we measure synchronized functional MRI signal fluctuations sensitive to the dynamic oxygen content in blood.
+
+I’ve been involved in several works applying structural and functional connectivity.
+
+For instance, in Rodrigue 2021, we explored ML approaches to identify clinical biomarkers.
+
+Unfortunately, we had to conclude that, despite promising data quality and reliability remain insufficient for robust biomarker discovery.
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -333,110 +561,8 @@ Thảo Nguyễn is a 2nd year Ph.D. student in Lyon. She's very committed and lo
           highlightSpans: true,
           ratio: '16:9'
       });
-
-      // Now retrieve all IDs of asciinema casts
-      const allcasts = new Map();
-
-      slideshow.on('afterShowSlide', function (slide) {
-        // Slide is the slide being navigated
-        var slideNumber = slide.getSlideIndex();
-        var element = document.getElementsByClassName("remark-visible")[0].getElementsByClassName('asciicast')
-        if (element.length == 0 ) {
-          return;
-        }
-
-        if (allcasts.has(slideNumber)) {
-          allcasts.get(slideNumber).play();
-          return;
-        }
-
-        var castid = element[0].attributes["id"].value;
-        allcasts.set(slideNumber, AsciinemaPlayer.create(
-            `images/${castid}.cast`,
-            document.getElementById(castid),
-            { autoPlay: true, speed: 1, idle_time_limit: 8, rows: 24, cols: 100 }
-        ));
-
-      });
-      slideshow.on('beforeHideSlide', function (slide) {
-        // Slide is the slide being navigated
-        var slideNumber = slide.getSlideIndex();
-        if (allcasts.has(slideNumber)) {
-          allcasts.get(slideNumber).pause();
-        }
-      });
     </script>
-    <script>
-    (function attachTimers(slideshow) {
-      const SEL = 'span.timer';
-
-      // --- tiny parser: "1h 5m 30s", "10 min", "mm:ss", "hh:mm:ss", or bare minutes ---
-      function parseSecs(s) {
-        s = (s || '').trim().toLowerCase();
-        let m;
-        if ((m = s.match(/^(\d{1,2}):([0-5]?\d):([0-5]?\d)$/))) return (+m[1])*3600 + (+m[2])*60 + (+m[3]);
-        if ((m = s.match(/^([0-5]?\d):([0-5]?\d)$/)))          return (+m[1])*60   + (+m[2]);
-        let total = 0, hit = false;
-        s.replace(/(\d+(?:\.\d+)?)\s*(h|hr|hrs|hour|hours|m|min|mins|minute|minutes|s|sec|secs|second|seconds)\b/g,
-          (_, n, u) => { hit = true; n = parseFloat(n);
-            if (/^h/.test(u)) total += Math.round(n*3600);
-            else if (/^m(?!s)/.test(u)) total += Math.round(n*60);
-            else total += Math.round(n);
-          });
-        if (hit) return total;
-        const bare = parseFloat(s);
-        return Number.isFinite(bare) ? Math.round(bare*60) : null; // bare number = minutes
-      }
-      function fmt(secs) {
-        secs = Math.max(0, Math.floor(secs));
-        const h = Math.floor(secs/3600), m = Math.floor((secs%3600)/60), s = secs%60;
-        return h ? `${h} hr ${m} min` : (m ? `${m} min ${s} sec` : `${s} sec`);
-      }
-
-      function start(el, secs) {
-        if (el.dataset.timerRunning === '1') return;
-        if (!el.dataset.original) el.dataset.original = el.textContent;
-        el.dataset.timerRunning = '1';
-        el.classList.add('started');
-        const end = Date.now() + secs*1000;
-        const tick = () => {
-          const remain = Math.max(0, Math.floor((end - Date.now())/1000));
-          el.textContent = fmt(remain);
-          if (remain <= 0) { stop(el); el.classList.add('finished'); if (el.dataset.done) el.textContent = el.dataset.done; }
-        };
-        el.dataset.timerId = String(setInterval(tick, 500));
-        tick();
-      }
-      function stop(el) { if (el.dataset.timerId) clearInterval(+el.dataset.timerId); delete el.dataset.timerId; delete el.dataset.timerRunning; }
-      function reset(el) { stop(el); el.classList.remove('started','finished'); if (el.dataset.original) el.textContent = el.dataset.original; }
-
-      function initIn(root) {
-        root.querySelectorAll(SEL).forEach(el => {
-          let secs = el.dataset.seconds ? parseInt(el.dataset.seconds,10) : null;
-          if (!Number.isFinite(secs) && el.dataset.until) {
-            const until = new Date(el.dataset.until); if (!isNaN(+until)) secs = Math.max(0, Math.round((until - Date.now())/1000));
-          }
-          if (!Number.isFinite(secs)) secs = parseSecs(el.textContent);
-          if (Number.isFinite(secs)) start(el, secs);
-        });
-      }
-      function resetIn(root) { root.querySelectorAll(SEL).forEach(reset); }
-
-      const visibleSlideRoots = () =>
-        Array.from(document.querySelectorAll('.remark-slide-container.remark-visible .remark-slide-content'));
-
-      slideshow.on('afterShowSlide', () => visibleSlideRoots().forEach(initIn));
-      slideshow.on('beforeHideSlide', () => visibleSlideRoots().forEach(resetIn));
-
-      // kick the initially rendered slide
-      visibleSlideRoots().forEach(initIn);
-    })(slideshow);
-    </script>
-    <!-- Add the roulette module -->
-    <script src="../remark/roulette.js?v=4"></script>
-    <script>
-      // Initialize once
-      Roulette.init(slideshow);
-    </script>
+    <script src="../remark/asciicasts.js"></script>
+    <script src="../remark/stepwise-svg.js"></script>
   </body>
 </html>
