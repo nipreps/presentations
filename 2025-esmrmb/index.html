@@ -9,7 +9,16 @@
     <link rel="stylesheet" type="text/css" href="../remark/nipreps.css?v=5" />
     <link rel="stylesheet" href="../remark/roulette.css?v=5" />
   </head>
+
   <body>
+
+<style>
+.table-compact .compare { width:100%; border-collapse: collapse; font-size: 0.9em; }
+.table-compact .compare th, .table-compact .compare td { padding: .45rem .6rem; border-bottom: 1px solid #e6e6e6; vertical-align: top; }
+.table-compact .compare th { text-align: left; white-space: nowrap; }
+.legend { margin-top: .5rem; font-size: .85em; color: #666; }
+</style>
+
 <script src="../remark/asciinema-player/asciinema-player.min.js?v=5"></script>
 <script src="https://kit.fontawesome.com/015d4b01de.js" crossorigin="anonymous"></script>
 <script type="text/javascript"
@@ -288,11 +297,23 @@ Thảo Nguyễn is a 2nd year Ph.D. student in Lyon. She's very committed and lo
 
 ---
 
+<a href="https://app.sli.do/event/jagJJcgjPAgM28UD1oXaAe">Click here to participate</a>
 <br />
-
 .boxed-content[
 <iframe src='https://wall.sli.do/event/jagJJcgjPAgM28UD1oXaAe?section=34a14fc7-37be-47c4-ba62-4221d4682ddc' style="width: 100%; height: 550px; border: 0"></iframe>
 ]
+
+???
+
+---
+
+<a href="https://app.sli.do/event/bDg8pfMNTCC7EXvGnyEKtv">Click here to participate</a>
+<br />
+.boxed-content[
+<iframe src='https://wall.sli.do/event/bDg8pfMNTCC7EXvGnyEKtv/?section=57802991-7016-4c7d-86b1-98c3f74d721a' style="width: 100%; height: 550px; border: 0"></iframe>
+]
+
+???
 
 ---
 counter: false
@@ -344,7 +365,7 @@ counter: false
 
 ---
 
-# The research workflow of connectivity analyses
+# The research workflow of network analyses
 
 .boxed-content[
 <object type="image/svg+xml" data="../assets/neuroimaging-workflow-large.svg" style="width: 100%; padding-top: 20pt;"></object>
@@ -357,7 +378,7 @@ counter: false
 
 ???
 
-In broad strokes, this is the MRI-based connectivity analysis pipeline.
+In broad strokes, this is the MRI-based network analysis pipeline.
 
 Interestingly, it looks like any machine learning pipeline: we acquire data, perform quality control, preprocess it, define features, and then apply statistical modeling to extract insights.
 
@@ -366,7 +387,7 @@ For a deeper dive into the details of the neuroimaging worflow, I've participate
 ---
 count:false
 
-# The research workflow of connectivity analyses
+# The research workflow of network analyses
 
 .boxed-content[
 <object type="image/svg+xml" data="../assets/neuroimaging-workflow-1.svg" style="width: 100%; padding-top: 20pt;"></object>
@@ -403,7 +424,7 @@ This is why my group and I have been deeply involved in BIDS, produced version-c
 ---
 count:false
 
-# The research workflow of connectivity analyses
+# The research workflow of network analyses
 
 .boxed-content[
 <object type="image/svg+xml" data="../assets/neuroimaging-workflow-2.svg" style="width: 100%; padding-top: 20pt;"></object>
@@ -437,61 +458,10 @@ A decade ago, we might have called it “feature engineering.”
 
 Regardless of the term, it’s crucial: “preprocessing” is now a keyword in job posts at major players like Anthropic, DeepMind, and OpenAI.
 
----
-
-# fMRIPrep: despite minimal, a complex workflow
-
-.boxed-content.center[
-<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
-]
-
-???
-
-Here I'm showing a very much simplified overview of fMRIPrep's design.
-
-Despite it being just "minimal" preprocessing and just one step of the pipeline, its complexity is evident.
-
-Rather than delving into each of these steps, I'll just say that there's a current need to update and improve computer vision algorithms and approaches (segmentation, image registration, dimensionality reduction, etc.) with AI/ML all across the dataflow.
-
----
-count:false
-class: stepwise-svg
-
-# fMRIPrep: despite minimal, a complex workflow
-
-.boxed-content.center[
-<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
-]
-
-???
 
 ---
 
-# fMRIPrep: generalizing further
-
-.boxed-content.center[
-<img src="https://github.com/oesteban/fmriprep/raw/f4c7a9804be26c912b24ef4dccba54bdd72fa1fd/docs/_static/fmriprep-21.0.0.svg" style="width: 100%; padding-top: 20pt" />
-
-]
-
-???
-
-https://www.templateflow.org/assets/templateflow_fig-birdsview.png
-
----
-
-# TemplateFlow: FAIR access to templates
-
-.boxed-content.center[
-<img src="https://www.templateflow.org/assets/templateflow_fig-birdsview.png" style="width: 70%; padding-top: 10pt" />
-
-]
-
-???
-
----
-
-# The research workflow of connectivity analyses
+# The research workflow of network analyses
 
 .boxed-content[
 <object type="image/svg+xml" data="../assets/neuroimaging-workflow-3.svg" style="width: 100%; padding-top: 20pt;"></object>
@@ -533,6 +503,210 @@ I’ve been involved in several works applying structural and functional connect
 For instance, in Rodrigue 2021, we explored ML approaches to identify clinical biomarkers.
 
 Unfortunately, we had to conclude that, despite promising data quality and reliability remain insufficient for robust biomarker discovery.
+
+---
+counter: false
+
+.section-mark.center[
+# Preprocessing
+
+## Let's learn from *fMRIPrep*
+]
+
+
+???
+
+---
+
+# fMRIPrep: despite minimal, a complex workflow
+
+.boxed-content.center[
+<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
+]
+
+???
+
+Here I'm showing a very much simplified overview of fMRIPrep's design.
+
+Despite it being just "minimal" preprocessing and just one step of the pipeline, its complexity is evident.
+
+Rather than delving into each of these steps, I'll just say that there's a current need to update and improve computer vision algorithms and approaches (segmentation, image registration, dimensionality reduction, etc.) with AI/ML all across the dataflow.
+
+---
+count:false
+class: stepwise-svg
+
+# fMRIPrep: despite minimal, a complex workflow
+
+.boxed-content.center[
+<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
+]
+
+???
+
+---
+
+# TemplateFlow: FAIR access to templates
+
+.boxed-content.center[
+<img src="https://www.templateflow.org/assets/templateflow_fig-birdsview.png" style="width: 70%; padding-top: 10pt" />
+
+]
+
+???
+
+---
+class: stepwise-svg
+
+# Susceptibility-derived distortions
+
+.boxed-content.center[
+<object type="image/svg+xml" data="../assets/sdc-the-problem.svg" style="width: 85%; padding-top: 5pt"></object>
+
+]
+
+???
+
+---
+
+# fMRIPrep: generalizing further
+
+.boxed-content.center[
+<object type="image/svg+xml" data="https://www.nipreps.org/identity/fmriprep/fmriprep-21.0.0-inkscape.svg" style="width: 95%; padding-top: 15pt"></object>
+
+]
+
+???
+
+---
+class: stepwise-svg
+
+# fMRIPrep: fit & transform
+
+.boxed-content.center[
+<object type="image/svg+xml" data="../assets/fmriprep-fit-transform-inkscape.svg" style="width: 100%; padding-top: 20pt"></object>
+
+]
+
+---
+
+# Our dMRI preprocessing pipeline
+
+.boxed-content.center[
+<object type="image/svg+xml" data="images/from-fmriprep-to-dmriprep-inkscape.svg" style="width: 100%; padding-top: 20pt"></object>
+
+]
+
+
+---
+counter: false
+
+.section-mark.center[
+# Hold on!
+
+## Someone must've done this before
+]
+
+
+---
+
+# Alternatives
+
+<br />
+.boxed-content[
+.table-compact[
+<table class="compare">
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>Scope</th>
+      <th>BIDS I/O</th>
+      <th>QC reports</th>
+      <th>Recon</th>
+      <th>License</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>QSIPREP</b></td>
+      <td>🟨 End‑to‑end pipeline</td>
+      <td>✅ BIDS App</td>
+      <td>✅ HTML reports</td>
+      <td>✅ (DIPY/MRtrix/DSI Studio)</td>
+      <td>✅ BSD-3-Clause license</td>
+    </tr>
+    <tr>
+      <td><b>MRtrix3 <code>dwifslpreproc</code></b></td>
+      <td>✅ Preproc wrapper of FSL</td>
+      <td>🟨 (via user scripts)</td>
+      <td>🟨 logs/figures</td>
+      <td>✅ MRtrix recon tools</td>
+      <td>✅ MPL-2.0 license (most parts)</td>
+    </tr>
+    <tr>
+      <td><b>FSL</b></td>
+      <td>🟨 Core tools (<code>topup</code>, <code>eddy</code>)</td>
+      <td>—</td>
+      <td>🟨 (text/log outputs)</td>
+      <td>✅ Several models</td>
+      <td>🟨 Custom license with commercial limitations.</td>
+    </tr>
+    <tr>
+      <td><b>TORTOISE & <br /> AFNI (FATCAT)</b></td>
+      <td>🟨 Core tools</td>
+      <td>—</td>
+      <td>🟨 (module outputs)</td>
+      <td>➕ DIFFCALC</td>
+      <td>🟨 GPL-3.0 license (mostly)</td>
+    </tr>
+  </tbody>
+</table>
+]
+
+.legend[✅ native · 🟨 partial/indirect · — not primary]
+]
+
+---
+counter: false
+
+.section-mark.center[
+# Hold on!
+
+## Let's define how we are going to work
+]
+
+---
+counter: false
+
+.section-mark.center[
+# We are ready
+
+## Let's build a dMRI preprocessing workflow
+]
+
+
+???
+
+---
+
+<a href="https://app.sli.do/event/iX7FsUf6x2AC9uYDzth2U7">Click here to participate</a>
+<br />
+
+.boxed-content[
+<iframe src='https://wall.sli.do/event/iX7FsUf6x2AC9uYDzth2U7/?section=f424c5d2-2296-47ef-9ada-015cb9dfccfe' style="width: 100%; height: 550px; border: 0"></iframe>
+]
+
+---
+
+<a href="https://app.sli.do/event/4n7qmzvyicR9YstEmnoQv7">Click here to participate</a>
+<br />
+.boxed-content[
+<iframe src='https://wall.sli.do/event/4n7qmzvyicR9YstEmnoQv7/?section=bdaf368b-f34a-41be-a048-0b9730bc4c86' style="width: 100%; height: 550px; border: 0"></iframe>
+]
+
+
+
+???
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
