@@ -781,6 +781,42 @@ counter: false
 
 ???
 
+---
+
+# Analytical variability in dMRI
+
+.boxed-content.center[
+<img src="https://www.nipreps.org/nipreps-book/_images/veraart-2019.png" style="width: 70%" alt="agreement across dMRI preprocessing steps" />
+
+.gray-text[Veraart et al. [ISMRM 2019](https://www.ismrm.org/19/program_files/MIS15.htm)]
+]
+
+???
+
+In his 2019 ISMRM talk [1], Dr. J. Veraart polled the developers of some of the major dMRI analysis software packages. The goal was to understand how much consensus there was in the field on whether to proceed with certain pre-processing steps. The poll showed that consensus is within reach. However, different pre-processing steps have varying levels of support. Head motion and eddy current correction, detecting outliers and denoising must be done. Susceptibility distortion correction and removing Gibbs-ringing are also good to do but depend on the acquisition parameters. Finally, for some steps such as correcting for B1 inhomogeneities or signal drift, their importance has not yet been demonstrated.
+
+---
+
+# dMRIPrep workflow
+
+.boxed-content.center[
+<img src="https://www.nipreps.org/nipreps-book/_images/figure1.svg" style="width: 50%" alt="proposed dMRIPrep workflow" />
+]
+
+???
+
+---
+class: stepwise-svg
+
+# Introducing *NiFreeze*
+
+.boxed-content.center[
+<object type="image/svg+xml" data="../assets/nifreeze-flowchart.svg" style="width: 90%; padding-top: 20pt"></object>
+
+]
+
+
+
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
     <script>
