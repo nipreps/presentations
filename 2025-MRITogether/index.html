@@ -118,44 +118,9 @@ layout: true
 counter: false
 
 .section-mark.center[
-# Objectives
-]
+# What and why?
 
-
-???
-
----
-class: stepwise-svg
-
-<br />
-<br />
-
-.boxed-content.larger.no-bullet[
-* .step-1.large[<i class="fa-solid fa-circle-right"></i> Contextualize **preprocessing** in the **data flow**]
-
-
-* .step-2.large[<i class="fa-solid fa-circle-right"></i> Understand the **compute graph** of preprocessing]
-
-
-* .step-3.large[<i class="fa-solid fa-circle-right"></i> Survey what's **available** and spot the **gaps**]
-
-
-* .step-4.large[<i class="fa-solid fa-circle-right"></i> Hands-on (**head-motion / eddy currents**)]
-
-
-* .step-5.large[<i class="fa-solid fa-circle-right"></i> Establish a **collaborative framework** & tooling]
-
-
-* .step-6.large[<i class="fa-solid fa-circle-right"></i> Strengthen **reproducibility** and **scaling**]
-]
-
----
-counter: false
-
-.section-mark.center[
-# Introduction
-
-## Preprocessing & pipelines
+## Analytical variability & preprocessing
 ]
 
 
@@ -257,6 +222,55 @@ A decade ago, we might have called it “feature engineering.”
 
 Regardless of the term, it’s crucial: “preprocessing” is now a keyword in job posts at major players like Anthropic, DeepMind, and OpenAI.
 
+---
+
+# fMRIPrep: despite minimal, a complex workflow
+
+.boxed-content.center[
+<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
+]
+
+???
+
+Here I'm showing a very much simplified overview of fMRIPrep's design.
+
+Despite it being just "minimal" preprocessing and just one step of the pipeline, its complexity is evident.
+
+Rather than delving into each of these steps, I'll just say that there's a current need to update and improve computer vision algorithms and approaches (segmentation, image registration, dimensionality reduction, etc.) with AI/ML all across the dataflow.
+
+---
+count:false
+class: stepwise-svg
+
+# fMRIPrep: despite minimal, a complex workflow
+
+.boxed-content.center[
+<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
+]
+
+???
+
+---
+
+# fMRIPrep: generalizing further
+
+.boxed-content.center[
+<object type="image/svg+xml" data="https://www.nipreps.org/identity/fmriprep/fmriprep-21.0.0-inkscape.svg" style="width: 95%; padding-top: 15pt"></object>
+
+]
+
+???
+
+---
+
+# TemplateFlow: FAIR access to templates
+
+.boxed-content.center[
+<img src="https://www.templateflow.org/assets/templateflow_fig-birdsview.png" style="width: 70%; padding-top: 10pt" />
+]
+
+???
+
 
 ---
 
@@ -304,64 +318,192 @@ For instance, in Rodrigue 2021, we explored ML approaches to identify clinical b
 Unfortunately, we had to conclude that, despite promising data quality and reliability remain insufficient for robust biomarker discovery.
 
 ---
-counter: false
 
-.section-mark.center[
-# Preprocessing
+# Despite active research, scarce clinical application
 
-## Let's learn from *fMRIPrep*
+.boxed-content[
+.center[
+<object type="image/svg+xml" data="../assets/neuroimaging-workflow-large.svg" style="width: 100%; padding-bottom: 10pt; padding-top: 20pt;"></object>
 ]
 
+.no-bullet[
+* .large[<i class="fa-solid fa-triangle-exclamation"></i> Alarming **analytical variability**:]
+  * .larger[Diffusion MRI [[Maier-Hein et al., (2015)](https://doi.org/10.1038/s41467-017-01285-x)]]
+  * .larger[Functional MRI [[Botvinik-Nezer et al., (2020)](https://doi.org/10.1038/s41586-020-2314-9)]]
+
+<br />
+* .large[<i class="fa-solid fa-dna"></i> **Like genomics** between HGP (2003) and NGS (2015)?]
+]
+]
 
 ???
+
+Therefore, although simple on the surface, the workflow is highly-complex and each step introduces potential variability.
+
+Complicating matters further, every lab around the world might use a slightly different pipeline.
+
+Different tools, different parameters—lead to inconsistent results.
+
+This fragmentation hinders progress and precludes between-study comparisons.
+
+The consequence is an acute scarcity of real-world applications of connectivity analyses.
+
+Let's compare to genomics.
+
+Neuroimaging is today in an early stage of standardization akin to genomics at the conclusion of the Human Genome Project in 2003.
+
+One key aspect for the remarkable advance of genomics is precisely the comprehensive standardization process of the pipeline that culminated some 10 years ago.
+
+For that reason, I advocate for replicating this success experience in neuroscience.
 
 ---
 
-# fMRIPrep: despite minimal, a complex workflow
+# Analytical variability in dMRI
 
-.boxed-content.center[
-<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
-]
-
-???
-
-Here I'm showing a very much simplified overview of fMRIPrep's design.
-
-Despite it being just "minimal" preprocessing and just one step of the pipeline, its complexity is evident.
-
-Rather than delving into each of these steps, I'll just say that there's a current need to update and improve computer vision algorithms and approaches (segmentation, image registration, dimensionality reduction, etc.) with AI/ML all across the dataflow.
+<figure style="width: 70%">
+![:img ismrm-challenge, 100%](https://oesteban.github.io/talks/NEMES-GU-2025/images/tractography-challenge.png)
+<figcaption>From <a href="https://doi.org/10.1038/s41467-017-01285-x">Maier-Hein et al. 2017</a>;
+doi:![:doi](10.1038/s41467-017-01285-x)</figcaption>
+</figure>
 
 ---
 count:false
-class: stepwise-svg
 
-# fMRIPrep: despite minimal, a complex workflow
+# Analytical variability in dMRI
 
-.boxed-content.center[
-<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
+.vertical-center[
+.center.white-bg[
+.large[
+***Tractography-based connectomes are dominated by false-positive connections***
+]
+
+Draft title (2015) - doi:[10.1101/084137](https://doi.org/10.1101/084137)
+
+]
+]
+<div style="background-image: url(https://oesteban.github.io/talks/NEMES-GU-2025/images/tractography-challenge.png); background-size: cover; height: 80%; width: 80%; margin-left: 180px; opacity: 0.1">
+</div>
+
+---
+
+# Analytical variability in fMRI
+
+<figure style="width: 65%">
+![:img narps, 100%](https://oesteban.github.io/talks/NEMES-GU-2025/images/narps-paper.png)
+<figcaption>From <a href="https://doi.org/10.1038/s41586-020-2314-9">Botvinik-Netzer et al. 2020</a>;
+doi:![:doi](10.1038/s41586-020-2314-9)</figcaption>
+</figure>
+
+---
+count: false
+
+# Despite active research, no real-world application
+
+.boxed-content[
+.center[
+<object type="image/svg+xml" data="../assets/neuroimaging-workflow-large.svg" style="width: 100%; padding-bottom: 10pt; padding-top: 20pt;"></object>
+]
+
+.no-bullet[
+* .large[<i class="fa-solid fa-triangle-exclamation"></i> Alarming **analytical variability**:]
+  * .larger[Diffusion MRI [[Maier-Hein et al., (2015)](https://doi.org/10.1038/s41467-017-01285-x)]]
+  * .larger[Functional MRI [[Botvinik-Nezer et al., (2020)](https://doi.org/10.1038/s41586-020-2314-9)]]
+
+<br />
+* .large[<i class="fa-solid fa-magnifying-glass-plus"></i> Insufficient **test-retest reliability** at the finer scales of brain units]
+  * .larger[[Nakuci et al., (2023)](https://doi.org/10.1038/s41598-023-33441-3)]]
 ]
 
 ???
 
+On top of all that methodological variability, there’s also inherent unreliability in measuring connectivity from session to session.
+
+If you scan the same participant twice, back-to-back, you can still get different connectivity measurements, indicating limited test-retest reliability.
+
+Despite all these concerns, more than 20 thousand papers were published focusing on functional connectivity and 10 thousand on structural connectivity in 2024, as per Pubmed.
+
 ---
 
-# TemplateFlow: FAIR access to templates
-
-.boxed-content.center[
-<img src="https://www.templateflow.org/assets/templateflow_fig-birdsview.png" style="width: 70%; padding-top: 10pt" />
+.center[
+<object type="image/svg+xml" data="../assets/reproducible-definition-grid.svg" style="width: 68%"></object>
+.small[
+*The Turing Way project* illustration by Scriberia. Used under a CC-BY 4.0 licence. doi:<a href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>.]
 ]
+
+---
+
+# More reliable measurements
+
+.center[
+.boxed-content[
+<object type="image/svg+xml" data="../assets/reproducible-definition-grid-axes-0.svg" style="width: 65%;"></object>
+
+[Esteban, (2025)](https://doi.org/10.1007/978-1-0716-4260-3_8) [[Methods for analyzing large neuroimaging datasets](https://doi.org/10.1007/978-1-0716-4260-3)]
+]
+]
+
+---
+count: false
+
+# More reliable measurements
+
+.center[
+.boxed-content[
+<object type="image/svg+xml" data="../assets/reproducible-definition-grid-axes-1.svg" style="width: 65%;"></object>
+
+[Esteban, (2025)](https://doi.org/10.1007/978-1-0716-4260-3_8) [[Methods for analyzing large neuroimaging datasets](https://doi.org/10.1007/978-1-0716-4260-3)]
+]
+]
+
+---
+count: false
+
+# More reliable measurements
+
+.center[
+.boxed-content[
+<object type="image/svg+xml" data="../assets/reproducible-definition-grid-axes-3.svg" style="width: 65%;"></object>
+
+[Esteban, (2025)](https://doi.org/10.1007/978-1-0716-4260-3_8) [[Methods for analyzing large neuroimaging datasets](https://doi.org/10.1007/978-1-0716-4260-3)]
+]
+]
+
+---
+count: false
+
+# More reliable measurements
+
+.center[
+.boxed-content[
+<object type="image/svg+xml" data="../assets/reproducible-definition-grid-axes-2.svg" style="width: 65%;"></object>
+
+[Esteban, (2025)](https://doi.org/10.1007/978-1-0716-4260-3_8) [[Methods for analyzing large neuroimaging datasets](https://doi.org/10.1007/978-1-0716-4260-3)]
+]
+]
+
+---
+counter: false
+
+.section-mark.center[
+# NiPreps
+## NeuroImaging PREProcessing toolS
+]
+
 
 ???
 
----
 
-# NiPreps: NeuroImaging PREProcessing toolS
+---
 
 .boxed-content[
 <br />
-.larger.center[
+<br />
+.large.center[
 "*analysis-grade*" data <i class="fa-solid fa-circle-right"></i> data **directly consumable by analyses**
+<br />
+<br />
 ]
+
 
 .pull-left[
 <br />
@@ -402,11 +544,108 @@ NiPreps yields “analysis-grade” data, with minimal processing interventions 
 ]
 
 ---
-
-# fMRIPrep: generalizing further
+class: stepwise-svg
 
 .boxed-content.center[
-<object type="image/svg+xml" data="https://www.nipreps.org/identity/fmriprep/fmriprep-21.0.0-inkscape.svg" style="width: 95%; padding-top: 15pt"></object>
+<object type="image/svg+xml" data="../assets/nipreps-chart.svg" style="width: 80%; padding-top: 5pt"></object>
+
+]
+
+---
+
+# Tracking *fMRIPrep*'s adoption
+
+.center[
+<img src="https://www.nipreps.org/assets/20251117_weekly.png" style="width: 90%; padding-top: 10pt" /><br />
+]
+
+---
+
+# Tracking *fMRIPrep*'s usage
+
+<br />
+
+.larger[
+<i class="fa-solid fa-circle-right"></i> It's critical to report **exact versions**
+
+<i class="fa-solid fa-circle-right"></i> Semantics inform about compatibility: **24.0.1**
+
+<i class="fa-solid fa-circle-right"></i> Long-term support (LTS) program.
+
+]
+
+.center[
+<img src="https://oesteban.github.io/talks/NEMES-GU-2025/images/20250204_versionstream.png" style="width: 90%; padding-top: 10pt" /><br />
+]
+
+---
+
+# Standard Operating Procedures (SOPs)
+
+.boxed-content[
+<iframe src="https://www.axonlab.org/hcph-sops/" width="100%" height="510px" style="border: 0; margin-top: 15px"></iframe>
+.center.small[https://www.axonlab.org/hcph-sops/]
+]
+
+
+---
+
+# Standardization in neuroimaging—impact
+
+.boxed-content.larger.no-bullet[
+
+* .large[<i class="fa-solid fa-hands-clapping"></i> **Not just wide adoption**]
+  .indent[.gray-text[Used in large neuroscientific endeavors: ENIGMA]
+
+  .gray-text[Industry: [Flywheel's gears for *MRIQC* and *fMRIPrep*](https://flywheel.io/insights/blog/comprehensive-support-bids#:~:text=The%20Flywheel%20Gear%20Exchange%20currently,to%20download%20your%20entire), [Amazon Web Services featured *fMRIPrep*](https://aws.amazon.com/blogs/opensource/fmri-data-preprocessing-aws-fmriprep/#:~:text=itself,efforts%20on%20preprocessing%20fMRI%20data), [QMENTA's RS fMRI tool derived from *fMRIPrep*](https://catalog.qmenta.com/tool/resting-state-fmri#:~:text=Catalog%20catalog,Networks%3B%20%E2%80%A2%20Salience%20Network)
+  ]
+  .gray-text[Relevant works: [Caucheteux, Gramfort & King, (2023)](https://doi.org/10.1038/s41562-022-01516-2), [Tozzi et al., (2024)](https://doi.org/10.1038/s41591-024-03057-9), [Hyon et al., (2020)](https://doi.org/10.1073/pnas.2013606117), [Yamashita et al., (2020)](https://doi.org/10.1371/journal.pbio.3000966).
+  ]
+  ]
+
+* .large[<i class="fa-solid fa-people-group"></i> **Built a Lasting Community**]
+  .indent[
+  .gray-text[100+ researchers engaged in the community worldwide]  
+  .gray-text[Community is critical to provide a footing for standardization (following BIDS' experience)]
+  ]
+
+* .large[<i class="fa-solid fa-industry"></i> **DevOps-inspired standardization**]
+  .indent[
+  .gray-text[Reducing the gap between research and application reversing the transference flow]
+  ]
+]
+
+???
+
+Beyond citations and the staggering usage figures I showed in my first presentation, NiPreps is a major achievement by DORA principles.
+
+NiPreps is used in large consortia like ENIGMA, given a foundation to pioneering clinical applications such as Tozzi 2024, and is offered by major industry players like Flywheel, QMENTA, and even AWS workflows.
+
+
+The NiPreps framework is driven by a community involving more than 100 scientist globally and their adoption continues growing.
+
+That’s the real impact: it’s changing how people conduct imaging studies and ensuring higher data quality across labs.
+
+One distinct reason for success is that we contributed to bridge the gap between research and real-world applicationi by reversing the typical knowledge transference flow:
+
+We integrate software engineering best practices from devops and industry for the standardization and solidification of the neuroimaging workflow.
+
+
+---
+
+# What's next?
+
+.boxed-content.large.no-bullet[
+* .large[<i class="fa-solid fa-meteor"></i> **PETPrep officially released**]
+  .indent.gray-text[Plans for a *FactoryPrep* that allows creating neuroimaging workflows]
+  <br />
+
+* .large[<i class="fa-solid fa-route"></i> The *fit&transform paradigm*]
+  .indent.gray-text[Lightweight, deterministically reproducible outputs]
+  <br />
+
+* .large[<i class="fa-solid fa-icicles"></i> **NiFreeze** head motion estimation for all]
+  .indent.gray-text[Estimating (and correcting) head motion across modalities]
 
 ]
 
@@ -415,10 +654,20 @@ NiPreps yields “analysis-grade” data, with minimal processing interventions 
 ---
 class: stepwise-svg
 
-# fMRIPrep: fit & transform
+# Future: fit & transform
 
 .boxed-content.center[
 <object type="image/svg+xml" data="../assets/fmriprep-fit-transform-inkscape.svg" style="width: 100%; padding-top: 20pt"></object>
+
+]
+
+---
+class: stepwise-svg
+
+# Introducing *NiFreeze*
+
+.boxed-content.center[
+<object type="image/svg+xml" data="../assets/nifreeze-flowchart.svg" style="width: 90%; padding-top: 20pt"></object>
 
 ]
 
@@ -427,8 +676,6 @@ counter: false
 
 .section-mark.center[
 # QA/QC
-
-## Quick notes
 ]
 
 
@@ -574,21 +821,6 @@ In this case, we can see how this particular T1 weighted image has obvious head 
 
 ---
 
-## Presenting MRIQC for DWI
-
-.boxed-content.center[
-<img src="../assets/mriqc-dmri-report.png" alt="workflow" style="width: 60%" />
-]
-
-???
-
-Over the last year, we have improved MRIQC to generate quality metrics and visualizations.
-
-The one you can see on the screen shows the shell-wise joint distribution of SNR (with reference to the noise floor calculated by means of PCA) in the x axis and FA in the y axes.
-
-
----
-
 # MRIQC: dMRI reports (HCPh)
 
 .boxed-content[
@@ -632,164 +864,56 @@ The one you can see on the screen shows the shell-wise joint distribution of SNR
 
 ---
 
-# fMRIPrep: recap
+# Does defacing influence QA/QC decisions?
 
-.boxed-content.center[
-<object type="image/svg+xml" data="../assets/fmriprep-fit-transform-inkscape.svg" style="width: 100%; padding-top: 20pt"></object>
+.right-column3[
+.larger.center[
+.large[**Stage 2 RR**] <br />
+(PLOS Biology)
 
+<a href="https://doi.org/10.1371/journal.pbio.3003149"><object type="image/svg+xml" data="https://oesteban.github.io/talks/assets/qr-provins-2025-RR.svg" style="width: 85%;"></object>
+
+Provins et al., (2025)</a>
+]
 ]
 
----
-
-# Our dMRI preprocessing pipeline
-
-.boxed-content.center[
-<object type="image/svg+xml" data="images/from-fmriprep-to-dmriprep-inkscape.svg" style="width: 100%; padding-top: 20pt"></object>
-
+.left-column3[
+<img src="https://oesteban.github.io/talks/assets/defacing-RR-figure1.png" style="width: 90%; padding-top: 25pt" /><br />
 ]
 
+???
 
 
 ---
-class: stepwise-svg
+count: false
 
-.boxed-content.center[
-<object type="image/svg+xml" data="../assets/nipreps-chart.svg" style="width: 80%; padding-top: 5pt"></object>
+# Thank you!
 
+.right-column3.center[
+<a href="https://www.nipreps.org/presentations/2025-MRITogether/"><object type="image/svg+xml" data="images/qr-talk-url.svg" style="width: 60%"></object></a>
+
+Oscar Esteban &lt;<code><a href="mailto:phd@oscaresteban.es">nipreps@gmail.com</a></code>>
+
+**MRI Together, Dec 11<sup>th</sup>, 2025**
 ]
 
----
+.left-column3[
+.center[
+The **NiPreps Community** (113 members + a robot)
+<img style="width: 90%" src="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/nipreps-members.png" />
 
-# Code of Conduct & License (workshop repo)
+
+<a href="https://www.axonlab.org"><img style="width: 200px;" src="https://oesteban.github.io/talks/assets/axonlab_logo.png" alt="AxonLab website" /></a>
 <br />
-
-.boxed-content[
-.pull-left[
-.large[<i class="fa-solid fa-handshake-angle"></i> **Code of Conduct**]
-.no-bullet[
-* .large[Be **respectful** & **inclusive**; critique ideas, not people.]
-* .large[Assume good intent.]
-* .large[Report issues to the organizers; we’ll redirect and move on.]
-]
 <br />
-.gray-text.large[[NiPreps' CoC](https://www.nipreps.org/community/CODE_OF_CONDUCT/) uses the Contributor Covenant v1.4]
-
-]
-
-.pull-right[
-.large[<i class="fa-solid fa-scale-balanced"></i> **License: Apache‑2.0**]
-.no-bullet[
-* .large[**Permissive and recommends tracking changes** → ideal for scientifc code.]
-]
-.gray-text.large[[NiPreps uses Apache 2.0](https://www.nipreps.org/community/licensing/)]
+<img src="https://oesteban.github.io/talks/assets/snsf_logo.png" style="width:180px;" alt="SNSF" /> &nbsp;
+<img src="https://oesteban.github.io/talks/assets/nimh_logo.png" style="width:180px;" alt="NIMH" /> &nbsp;
+<img src="https://oesteban.github.io/talks/assets/czi_logo.png" style="width:100px;" alt="CZI" /> &nbsp;&nbsp;
 ]
 ]
 
-
----
-
-# Analytical variability in dMRI
-
-.boxed-content.center[
-<img src="https://www.nipreps.org/nipreps-book/_images/veraart-2019.png" style="width: 70%" alt="agreement across dMRI preprocessing steps" />
-
-.gray-text[Veraart et al. [ISMRM 2019](https://www.ismrm.org/19/program_files/MIS15.htm)]
-]
 
 ???
-
-In his 2019 ISMRM talk [1], Dr. J. Veraart polled the developers of some of the major dMRI analysis software packages. The goal was to understand how much consensus there was in the field on whether to proceed with certain pre-processing steps. The poll showed that consensus is within reach. However, different pre-processing steps have varying levels of support. Head motion and eddy current correction, detecting outliers and denoising must be done. Susceptibility distortion correction and removing Gibbs-ringing are also good to do but depend on the acquisition parameters. Finally, for some steps such as correcting for B1 inhomogeneities or signal drift, their importance has not yet been demonstrated.
-
----
-
-# dMRIPrep workflow
-
-.boxed-content.center[
-<img src="https://www.nipreps.org/nipreps-book/_images/figure1.svg" style="width: 50%" alt="proposed dMRIPrep workflow" />
-]
-
-???
-
----
-class: stepwise-svg
-
-# Introducing *NiFreeze*
-
-.boxed-content.center[
-<object type="image/svg+xml" data="../assets/nifreeze-flowchart.svg" style="width: 90%; padding-top: 20pt"></object>
-
-]
-
----
-counter: false
-
-.section-mark.center[
-<a href="https://www.nipreps.org/nipreps-book">
-  <object type="image/svg+xml" data="images/qr-nipreps-book.svg" style="width: 20%"></object>
-</a>
-
-# <a href="https://www.nipreps.org/nipreps-book" style="text-decoration: none" target="_blank"><span style="font-size: 0.8em; color: #666">nipreps.org/</span><br />nipreps-book</a>
-]
-
-???
-
-
----
-counter: false
-
-.section-mark.center[
-## Option 2: Docker
-
-# <i class="fa-brands fa-docker large"></i>
-
-.large[
-.large[
-```
-docker run -it --rm -p 8888:8888 \
-       -t nipreps/nipreps-book
-```
-]
-]
-]
-
-
----
-counter: false
-
-.section-mark.center[
-## Option 3: Binder
-
-<a href="https://mybinder.org/v2/gh/nipreps/nipreps-book/main?urlpath=lab/tree/docs/notebook" target="_blank">
-  <object type="image/svg+xml" data="images/qr-nipreps-book-binder.svg" style="width: 20%"></object><br />
-  <img src="https://mybinder.org/badge_logo.svg" alt="https://mybinder.org/v2/gh/nipreps/nipreps-book/main?urlpath=lab/tree/docs/notebook" />
-</a>
-
-.large[
-.large[
-.gray-text[https:// [shorturl.at/LZ7Wa](https://mybinder.org/v2/gh/nipreps/nipreps-book/main?urlpath=lab/tree/docs/notebook)]
-]
-]
-]
-
-
----
-counter: false
-
-.section-mark.center.large[
-# <a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-02-bids/#3" target="_blank">
-  BIDS Unit from NiPreps course
-</a>
-]
-
-???
-
----
-counter: false
-
-.section-mark.center[
-# Thanks!
-
-## Questions?
 
 ]
 
