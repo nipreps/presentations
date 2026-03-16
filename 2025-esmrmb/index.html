@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta name="grammarly" content="false">
     <meta name="google" content="notranslate">
-    <link rel="stylesheet" type="text/css" href="../remark/asciinema-player/asciinema-player.css?v=5" />
-    <link rel="stylesheet" type="text/css" href="../remark/nipreps.css?v=5" />
-    <link rel="stylesheet" href="../remark/roulette.css?v=5" />
+    <link rel="stylesheet" type="text/css" href="../remark/vendor/asciinema-player/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../remark/core/base.css" />
+    <link rel="stylesheet" type="text/css" href="../remark/themes/nipreps.css" />
+    <link rel="stylesheet" href="../remark/ext/roulette.css" />
   </head>
 
   <body>
@@ -19,7 +20,8 @@
 .legend { margin-top: .5rem; font-size: .85em; color: #666; }
 </style>
 
-<script src="../remark/asciinema-player/asciinema-player.min.js?v=5"></script>
+<style>:root { --logo-url: url("../assets/logo_nipreps.png"); }</style>
+<script src="../remark/vendor/asciinema-player/asciinema-player.min.js"></script>
 <script src="https://kit.fontawesome.com/015d4b01de.js" crossorigin="anonymous"></script>
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
@@ -1193,33 +1195,8 @@ counter: false
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-    <script>
-      // Use: ![:img Alt text with spaces but not commas, 50%](image.png)
-      remark.macros.img = function (altText, width) {
-        var url = this;
-        return '<img alt="' + altText + '" src="' + url + '" style="width: ' + width + '" />';
-      };
-      // Use: ![:video](10.5129/10234)
-      remark.macros.video = function (width) {
-        var url = this;
-        return '<video src="' + url + '" width="' + width + '" preload="auto" controls />';
-      };
-      // Use: ![:doi](10.5129/10234)
-      remark.macros.doi = function () {
-        var doi = this;
-        return '<a href="https://doi.org/' + doi + '">' + doi + '</a>';
-      };
-
-      var slideshow = remark.create({
-          highlightStyle: 'monokai',
-          highlightLanguage: 'remark',
-          highlightLines: true,
-          countIncrementalSlides: false,
-          highlightSpans: true,
-          ratio: '16:9'
-      });
-    </script>
-    <script src="../remark/asciicasts.js"></script>
-    <script src="../remark/stepwise-svg.js"></script>
+    <script src="../remark/core/engine.js"></script>
+    <script src="../remark/ext/asciicasts.js"></script>
+    <script src="../remark/ext/stepwise-svg.js"></script>
   </body>
 </html>
