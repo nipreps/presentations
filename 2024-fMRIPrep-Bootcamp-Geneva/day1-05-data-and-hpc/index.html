@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>fMRIPrep Bootcamp | Day 1 :: BIDS Hands-on</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../../remark/vendor/asciinema-player/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../../remark/core/base.css" />
+    <link rel="stylesheet" type="text/css" href="../../remark/themes/nipreps.css" />
+    <link rel="stylesheet" href="../../remark/ext/nav-controls.css" />
+  </head>
+  <body>
+<style>
+:root {
+  --logo-url: url("../../assets/logo_nipreps.png");
+  --accent: #324989;
+  --accent-dim: #d2c295;
+  --heading-color: #324989;
+}
+/* Bootcamp-specific styles */
+.blur {
+    -webkit-filter: blur(5px) opacity(.3);
+    -moz-filter: blur(10px) opacity(.3);
+    -o-filter: blur(5px) opacity(.3);
+    -ms-filter: blur(5px) opacity(.3);
+    filter: blur(5px) opacity(.3);
+}
+.perma-sidebar {
+  float: left;
+  background-color: #324989;
+  color: #f4f4f4;
+  width: 40px;
+  height: 100%;
+  padding: 0;
+  margin: 0 2em 0 0;
+  text-align: center;
+}
+.perma-sidebar p {
+  text-align: left;
+  font-size: 80%;
+  height: 35px;
+  width: 670px;
+  margin: 320px 0 0 -315px;
+}
+.perma-sidebar h2:last-of-type, .perma-sidebar h3:last-child {
+  color: #d2c295;
+}
+.section-separator .middle {
+  margin-left: 210px;
+  width: 80%;
+}
+.fa-solid { color: #324989; }
+.fa-brands { color: #324989; }
+.fa-blank { color: #ffffff; }
+em { color: #324989; }
+strong { color: #324989; }
+.gray-text { color: #888; }
+.gray-text em, .gray-text strong { color: #888; }
+.boxed-content {
+  float: left;
+  display: block;
+  width: 89%;
+  padding-right: 4%;
+}
+.boxed-bottom {
+  clear: both;
+  margin-top: 0px;
+}
+.distribute {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 80%;
+  width: 100%;
+}
+.no-bullet > ul { list-style-type: none; padding-left: 0; }
+.no-bullet > ul > li > ul { padding-left: 2.8em; }
+.left-column2 { width: 35%; height: 85%; float: left; }
+.left-column2 h2:last-of-type, .left-column2 h3:last-child { color: #000; }
+.right-column2 { width: 50%; float: right; padding-top: 1em; margin-right: 2.5em; }
+.left-column3 { display: block; width: auto; height: 85%; margin: 0 32% 0 5%; }
+.left-column3 h2:last-of-type, .left-column3 h3:last-child { color: #000; }
+.left-column3 li { margin-left: 25px; }
+.right-column3 { width: 30%; float: right; padding-top: 1em; }
+.left-column-mid { width: 45%; float: left; }
+.right-column-mid { width: 45%; float: right; }
+.left-column-inv { color: #777; width: 75%; height: 92%; float: left; }
+.right-column-inv { width: 20%; float: right; padding-top: 1em; }
+.caption { font-size: 0.7em; }
+.slide-slug { bottom: 12px; opacity: .5; position: absolute; left: 4em; }
+.svg-reportlet { width: 75%; }
+.small code { font-size: 9pt; }
+.tiny code { font-size: 8.5pt; }
+.small { font-size: 0.7em; }
+.larger { font-size: 1.4em; }
+.large { font-size: 1.6em; }
+.cut-right { margin-right: 100px; }
+.align-right { text-align: right; }
+.rotate {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.hidden-text { color: transparent; user-select: none; }
+.pad-left { padding-left: 2.0em; }
+.pad-top { padding-top: 30px; }
+.install-cmd { top: 20px; position: absolute; right: 4em; }
+figure { display: block; margin-left: auto; margin-right: auto; font-size: 8pt; }
+figcaption { text-align: right; }
+.program-table td:nth-child(2) { font-size: 1.2em; }
+.program-table td:nth-child(1) { font-size: 0.9em; color: #999; padding-right: 20px; }
+.people-table td:nth-child(1) { padding-right: 20px; }
+.people-table td:nth-child(1) img { object-fit: cover; width: 150px; height: 150px; filter: grayscale(1); }
+.many-people-table td:nth-child(1) { padding-right: 20px; }
+.many-people-table td:nth-child(1) img { object-fit: cover; width: 80px; height: 80px; filter: grayscale(1); }
+.top-right { font-size: 0.8em; position: absolute; width: 100px; text-align: center; padding: 0; margin: 0; top: 0; right: 5%; }
+.red { color: #fa0000; }
+.blue { color: #0000fa; }
+.green { color: #698b69; }
+</style>
+<style>.right-column { width: 65%; } .people-table td:nth-child(1) img { width: 200px; height: 200px; }</style>
+<script src="../../remark/vendor/asciinema-player/asciinema-player.min.js"></script>
+<script src="https://kit.fontawesome.com/7e31cfd31d.js" crossorigin="anonymous"></script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true},
+      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+      TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+      autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+<textarea id="source">
+
+name: title
+layout: true
+class: center
+---
+layout: false
+count: false
+
+
+.center[
+<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-04-data-and-hpc/">
+  <img src="images/qr-talk-url.svg" alt="workflow" style="width: 20%" />
+  <br />
+  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-04-data-and-hpc/
+</a>
+
+<br />
+<br />
+
+## Data and HPC
+
+Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>>
+
+Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
+]
+
+---
+name: newsection
+layout: true
+
+.perma-sidebar[
+<p class="rotate">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: Data & HPC</span>
+</p>
+]
+
+---
+
+## Outlook
+
+.right-column3.center[
+<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-04-data-and-hpc/">
+  <img src="images/qr-talk-url.svg" alt="workflow" style="width: 100%" />
+  <br />
+  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-04-data-and-hpc/
+</a>
+]
+
+.left-column3[
+
+.large[
+
+<br />
+
+* Accessing the cluster and creating an environment
+
+* Datalad
+
+* Fetching data
+
+]]
+
+???
+
+---
+
+# Logging in into a cluster and setting up conda
+
+.boxed-content.pad-top[
+<div class="asciicast" id="636539"></div>
+]
+
+
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script src="../../remark/core/engine.js"></script>
+    <script src="../../remark/ext/nav-controls.js"></script>
+    <script>
+// Asciicast loader with data-src support
+const allcasts = new Map();
+slideshow.on('afterShowSlide', function (slide) {
+  var slideNumber = slide.getSlideIndex();
+  var element = document.getElementsByClassName("remark-visible")[0].getElementsByClassName('asciicast');
+  if (element.length == 0) return;
+  if (allcasts.has(slideNumber)) { allcasts.get(slideNumber).play(); return; }
+  var el = element[0];
+  var src = el.getAttribute('data-src') || ('images/' + el.id + '.cast');
+  allcasts.set(slideNumber, AsciinemaPlayer.create(
+    src, el,
+    { autoPlay: true, speed: 1, idleTimeLimit: 8, rows: 24, cols: 100 }
+  ));
+});
+slideshow.on('beforeHideSlide', function (slide) {
+  var slideNumber = slide.getSlideIndex();
+  if (allcasts.has(slideNumber)) { allcasts.get(slideNumber).pause(); }
+});
+    </script>
+  </body>
+</html>
