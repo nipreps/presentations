@@ -42,15 +42,9 @@ layout: true
 class: section-separator
 
 .perma-sidebar[
-## BHD2020
-### (Day 2, 14h CET)
 # *NiPreps*
 
-<br />
-<br />
-<br />
-<br />
-<br />
+<br /><br /><br /><br />
 
 <p align="center">
 <object type="text/xml+svg" data="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/qr-code.svg" style="width: 70%"></object>
@@ -66,15 +60,9 @@ name: sidebar
 layout: true
 
 .perma-sidebar[
-## BHD2020
-### (Day 2, 14h CET)
 # *NiPreps*
 
-<br />
-<br />
-<br />
-<br />
-<br />
+<br /><br /><br /><br />
 
 <p align="center">
 <object type="text/xml+svg" data="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/qr-code.svg" style="width: 70%"></object>

@@ -47,20 +47,16 @@ layout: true
 class: section-separator
 
 .perma-sidebar[
-## TORW2020
-### Talk 12
 # NiPreps
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+<br /><br /><br /><br />
 
 <p align="center">
 <img src="assets/nipreps-qr.svg" width="70%" />
+</p>
+<br />
+<p align="center">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
 </p>
 ]
 
@@ -81,20 +77,16 @@ name: sidebar
 layout: true
 
 .perma-sidebar[
-## TORW2020
-### Talk 12
 # NiPreps
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+<br /><br /><br /><br />
 
 <p align="center">
 <img src="assets/nipreps-qr.svg" width="70%" />
+</p>
+<br />
+<p align="center">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
 </p>
 ]
 
