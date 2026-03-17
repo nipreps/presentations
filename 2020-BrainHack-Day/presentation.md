@@ -39,19 +39,11 @@ I'm going to talk about how we are building a framework of preprocessing pipelin
 ---
 name: newsection
 layout: true
-class: section-separator
 
 .perma-sidebar[
-# *NiPreps*
-
-<br /><br /><br /><br />
-
-<p align="center">
-<object type="text/xml+svg" data="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/qr-code.svg" style="width: 70%"></object>
-</p>
-<br />
-<p align="center">
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+<p class="rotate">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  <span style="padding-left: 10px; font-weight: 600;">NiPreps | NeuroImaging PREProcessing toolS</span>
 </p>
 ]
 
@@ -60,16 +52,9 @@ name: sidebar
 layout: true
 
 .perma-sidebar[
-# *NiPreps*
-
-<br /><br /><br /><br />
-
-<p align="center">
-<object type="text/xml+svg" data="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/qr-code.svg" style="width: 70%"></object>
-</p>
-<br />
-<p align="center">
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+<p class="rotate">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  <span style="padding-left: 10px; font-weight: 600;">NiPreps | NeuroImaging PREProcessing toolS</span>
 </p>
 ]
 
