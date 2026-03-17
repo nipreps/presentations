@@ -266,7 +266,7 @@ In particular, I want to thank Elizabeth DuPre (McGill) and James Kent (Univ. of
 ## *fMRIPrep* is *stable* today, although unfinished
 
 <div align="center" style='margin-top: 1em'>
-<img alt="The fMRIPrep workflow" src="assets/fmriprep-workflow-final.svg" width="60%" />
+<img alt="The fMRIPrep workflow" src="../assets/fmriprep-workflow-final.svg" width="60%" />
 </div>
 ([Esteban et al., 2019](https://doi.org/10.1038/s41592-018-0235-4))
 
@@ -339,7 +339,7 @@ Reports conclude with a list of encountered errors (if any).
 ## Reports are a crucial element to ensure transparency
 .pull-left[
 <p align="center">
-<img src="assets/jessey.png" width="400px" />
+<img src="../assets/wright-2019.png" width="400px" />
 </p>
 ]
 
