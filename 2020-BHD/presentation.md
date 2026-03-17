@@ -14,7 +14,7 @@ count: false
 ### O. Esteban
 #### CHUV | Lausanne University Hospital
 
-###### [www.nipreps.org/assets/bhd2020](https://www.nipreps.org/assets/bhd2020)
+###### [www.nipreps.org/presentations/2020-BHD](https://www.nipreps.org/presentations/2020-BHD/)
 ]
 
 ---
@@ -30,7 +30,7 @@ count: false
 ### O. Esteban
 #### CHUV | Lausanne University Hospital
 
-###### [www.nipreps.org/assets/bhd2020](https://www.nipreps.org/assets/bhd2020)
+###### [www.nipreps.org/presentations/2020-BHD](https://www.nipreps.org/presentations/2020-BHD/)
 ]
 
 ???
