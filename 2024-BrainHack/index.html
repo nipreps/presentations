@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BrainHack 2024: NiPreps</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../remark/vendor/asciinema-player/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../remark/core/base.css" />
+    <link rel="stylesheet" type="text/css" href="../remark/themes/nipreps.css" />
+    <link rel="stylesheet" href="../remark/ext/nav-controls.css" />
+  </head>
+  <body>
+<style>:root { --logo-url: url("../assets/logo_nipreps.png"); }</style>
+<script src="../remark/vendor/asciinema-player/asciinema-player.min.js"></script>
+<script src="https://kit.fontawesome.com/015d4b01de.js" crossorigin="anonymous"></script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true},
+      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+      TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+      autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+<textarea id="source">
+
+name: title
+layout: true
+class: center
+---
+layout: false
+count: false
+
+.middle.center[
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/nipreps-transparent.png" width="80%" />
+</p>
+
+## @ BrainHack 2024
+
+<br />
+<br />
+
+### Oscar Esteban
+#### CHUV | Lausanne University Hospital
+
+###### [www.nipreps.org/assets/BrainHack2024](https://www.nipreps.org/assets/BrainHack2024)
+]
+
+---
+name: newsection
+layout: true
+
+.perma-sidebar[
+<p class="rotate">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  <span style="padding-left: 10px; font-weight: 600;">Standardizing neuroimaging workflows</span>
+</p>
+]
+
+---
+
+# Why standardizing?
+
+.boxed-content[
+.distribute[
+* Increase reliability -- classic test theory:
+  * Repetition
+  * Standardization
+
+* Other
+  * Pushing the *truck factor* above 1.0.
+  * Engage users
+
+*Standardized Preprocessing in Neuroimaging: Enhancing Reliability and Reproducibility* doi:[10.31219/osf.io/42bsu](https://doi.org/10.31219/osf.io/42bsu), chapter 3.1 of *Methods for analyzing large neuroimaging datasets* doi:[10.17605/OSF.IO/D9R3X](https://doi.org/10.17605/OSF.IO/D9R3X) edited by R. Whelan and H. Lemaître.
+]]
+
+---
+
+# Facets to standardize
+
+.boxed-content[
+.distribute.large[
+* **Outer interface** (inputs and outputs). Also, consider an internal data structure format for high throughput.
+* **Implementation** (WDL vs. programmed): code styling, best practices, BIDS-Apps.
+* **Modularize** (see *NiPreps* and *TemplateFlow*).
+* Use **containers** to ensure software delivery and reproducibility.
+* Implement testing and **continuous integration** to catch errors early and streamline development.
+* **Version** the workflow and its components to ensure compatibility and track changes, issue **LTS**.
+* Promote **community** and social standardization through collaboration, documentation, telemetry, and open-source practices.
+* **Visual reporting**
+]]
+
+---
+
+# "Analysis-grade" data
+
+.larger[
+The *NeuroImaging PREProcessing toolS* (*[NiPreps](https://nipreps.org).org*) augment scanners to produce *analysis-grade* data (= **directly consumable by analyses**)
+]
+
+<br />
+.pull-left[
+
+***Analysis-grade* data** is an analogy to the concept of "*sushi-grade (or [sashimi-grade](https://en.wikipedia.org/wiki/Sashimi)) fish*" in that both are:
+
+.large[**minimally preprocessed**,]
+
+and
+
+.large[**safe to consume** directly.]
+]
+
+.pull-right[
+<img align="right" style='margin-right: 50px' src="https://1.bp.blogspot.com/-Osh4H4WXka0/WlMJmVgkZTI/AAAAAAAAEMY/GynUzSomJ-EBiyqv2m-maiOyKSM7SOmNACLcBGAs/s400/yellowfin%2Btuna%2Bsteaks%2Bnutrition.jpg" />
+]
+
+---
+
+<p align="center">
+<img src="../assets/nipreps-chart.svg" width="63%" /><br />
+<em>NiPreps</em> (<a href="https://doi.org/10.31219/osf.io/ujxp6">Esteban et al., 2020</a>)
+</p>
+
+---
+
+# BIDS-Apps: subject-wise parallelization
+
+<p align="center">
+<a href="https://doi.org/10.1371/journal.pcbi.1005209">
+<img src="https://storage.googleapis.com/plos-corpus-prod/10.1371/journal.pcbi.1005209/2/pcbi.1005209.g002.PNG_L?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=wombat-sa%40plos-prod.iam.gserviceaccount.com%2F20251012%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20251012T212418Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=52e6c240daae3ee6886133314de143e2c0af02db1aaf55ef5e243dbfa348ed1c11424da1af88bdf19ea52d93caa910d7baae75ab4ca46dab505d42f4f3c47831c904291819f5c6ee40a91d3be521a0a0f6dea82974bd60d017f2b6e668473012b6f2cd48c19811d772c338eb2ae3383de1c4bf4d821a8dcb09a159df000fc7f0f56716cd2056ff9b6511ea7b20453056613ff0fbd0a130600db838a4112927ef528fe37357b7be287fad16e76cf82cf66ba2a599071af13f9edb9bcfb3598333736e840deb4a588e7f10cc2d0727fc9277b5d33e129b84cdeb42c78d6b1c5e6bb19daf48a4b2b0fea130eecebd94e684293f8de4aa9d995299e4169d309f0599" width="90%" /><br /><br />
+(Gorgolewski et al., 2017)
+</a>
+</p>
+
+---
+
+## The individual report
+<p align="center">
+<video controls="controls" width="70%"
+       name="Video Name" src="../assets/fmriprep-report.mov"></video>
+</p>
+
+---
+
+template: title
+layout: false
+.middle[
+<p align="center">
+<img src="https://github.com/oesteban/fmriprep/raw/f4c7a9804be26c912b24ef4dccba54bdd72fa1fd/docs/_static/fmriprep-21.0.0.svg" width="95%" />
+</p>
+]
+
+---
+
+# fMRIPrep's usage
+
+<p align="center">
+<img src="images/20240502_weekly.png" width="85%" /><br />
+</p>
+
+---
+
+# fMRIPrep's usage
+
+<p align="center">
+<img src="images/20240502_versionstream.png" width="85%" /><br />
+</p>
+
+---
+
+# *TemplateFlow*
+
+<p align="center">
+<img src="https://www.templateflow.org/assets/templateflow_fig-birdsview.png" width="60%" /><br />
+(<a href="https://doi.org/10.1038/s41592-022-01681-2">Ciric et al., 2022</a>)
+</p>
+
+---
+
+# *TemplateFlow* | Client
+
+<div class="asciicast" id="501873"></div>
+
+---
+
+# Conclusion
+
+<p align="center">
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41596-020-0327-3/MediaObjects/41596_2020_327_Fig1_HTML.png?as=png" width="90%" /><br />
+(<a href="https://doi.org/10.1038/s41596-020-0327-3">Esteban et al., 2020</a>)
+</p>
+
+---
+
+.boxed-content[
+.middle.center[
+# Thanks!
+
+### Questions?
+
+]
+]
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script src="../remark/core/engine.js"></script>
+    <script>
+      // Custom asciicasts using asciinema.org remote URLs
+      const allcasts = new Map();
+
+      slideshow.on('afterShowSlide', function (slide) {
+        var slideNumber = slide.getSlideIndex();
+        var element = document.getElementsByClassName("remark-visible")[0].getElementsByClassName('asciicast')
+        if (element.length == 0 ) {
+          return;
+        }
+
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).play();
+          return;
+        }
+
+        var castid = element[0].attributes["id"].value;
+        allcasts.set(slideNumber, AsciinemaPlayer.create(
+            'https://asciinema.org/a/' + castid + '.cast',
+            document.getElementById(castid),
+            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 17 }
+        ));
+      });
+
+      slideshow.on('beforeHideSlide', function (slide) {
+        var slideNumber = slide.getSlideIndex();
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).pause();
+        }
+      });
+    </script>
+    <script src="../remark/ext/stepwise-svg.js"></script>
+    <script src="../remark/ext/nav-controls.js"></script>
+  </body>
+</html>
