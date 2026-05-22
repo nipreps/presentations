@@ -27,7 +27,7 @@
 .footer {
   position: absolute;
   bottom: 5px;
-  left: 0;
+  left: 2em;
   right: 0;
   display: flex;
   flex-direction: row;
@@ -52,12 +52,15 @@
     linear-gradient(to left, transparent, #9e005d) 0 0    / 90% 5px no-repeat,
     linear-gradient(to left, transparent, #2e3192) 0 10px / 90% 5px no-repeat;
 }
+figcaption {
+    text-align: left;
+}
 </style>
 
 <style>:root { 
     --logo-url: url("../assets/logo_nipreps.png");
     --accent: #2e3192;
-    --accent-dark: #2e3192;
+    --accent-dark: #252774;
 }</style>
 <script src="../remark/vendor/asciinema-player/asciinema-player.min.js"></script>
 <script src="https://kit.fontawesome.com/015d4b01de.js" crossorigin="anonymous"></script>
@@ -119,8 +122,27 @@ counter: false
 name: nofooter
 layout: true
 
+.perma-sidebar[
+<p class="rotate">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  <span style="padding-left: 10px; font-weight: 600;">OHBM Educational — NiPreps (June 14<sup>th</sup>, 2026)</span>
+</p>
+]
+
+---
+name: footer-nobar
+template: nofooter
+layout: true
+
+.footer[
+.footer-logo-row[
+<img src="images/ohbm2026-footer.png" height="25px" />
+]
+]
+
 ---
 name: footer
+template: nofooter
 layout: true
 
 .footer[
@@ -141,8 +163,7 @@ I have no conflicts of interest in relation to this presentation to disclose.
 ]
 
 ---
-template: nofooter
-class: title-slide
+template: title
 
 .center.middle.black[
 
