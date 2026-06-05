@@ -216,6 +216,76 @@ Learn to drive these tools — and to **catch them when they're wrong** — befo
 - Roadmap. The "one thread" line is the spine of the whole talk.
 
 ---
+
+# Move 1 · Start where it doesn't (yet) matter
+
+.boxed-content[
+Don't learn to fly an AI on your **flagship pipeline.**
+
+Start on small, **low-stakes** projects — ideally ones that aren't even science:
+
+- the cost of a mistake is *near zero*,
+- the feedback loop is *fast*,
+- you learn the **tooling and the failure modes** before they can touch your data.
+]
+
+.center[*Then bring those habits back to the code that matters.*]
+
+???
+
+- Kicker "Move 1" orients the audience; no separate divider slide (budget).
+
+---
+
+# Move 1 · Four things I built first
+
+.boxed-content[
+.pull-left[
+**CV manager** — `publications_index`
+
+One YAML file &rarr; APA, BibTeX, Spanish CVA and NIH biosketch; CI refreshes citation counts.
+
+<br />
+
+**Manuscript handling** — PCI Registered Reports
+
+Drafts personalized reviewer invitations straight from the editorial workflow.
+]
+.pull-right[
+**Grant handling** — `~/Grants`
+
+Skills + agent review *panels* that draft, lint and stress-test proposals against funder rubrics.
+
+<br />
+
+**Literature skills** — `/s2-query` + `/zotero`
+
+Search Semantic Scholar, sync Zotero &harr; a CSL-JSON library. *(demo next)*
+]
+]
+
+.center[*Not one of these is "science" — every one taught me how the tools behave.*]
+
+???
+
+- All four are real, private repos. Keep this fast (~45 s): the point is "low-stakes reps."
+
+---
+
+# Move 1 · Search &rarr; curate, in one place
+
+.boxed-content[
+<div class="asciicast" id="lit-skills"></div>
+]
+
+.center[`/s2-query` finds the papers · `/zotero` pulls them into the library — no browser, no copy-paste.]
+
+???
+
+- PLACEHOLDER: record `images/lit-skills.cast` — `/s2-query` search, then `/zotero` pull/push.
+- If the cast is missing or won't play, talk through the two commands live.
+
+---
 template: title
 
 .center.middle.black[
