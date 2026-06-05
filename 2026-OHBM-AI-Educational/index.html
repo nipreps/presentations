@@ -286,6 +286,82 @@ Search Semantic Scholar, sync Zotero &harr; a CSL-JSON library. *(demo next)*
 - If the cast is missing or won't play, talk through the two commands live.
 
 ---
+
+# Move 2 · A challenge I set myself
+
+.boxed-content[
+.pull-left[
+February 2026. A project I'd been **putting off for years:**
+run **all of ABIDE I + II** through fMRIPrep.
+
+~2,200 subjects. 43 sites. An HPC cluster.
+A heavy lift I never felt like starting.
+]
+.pull-right[
+So I changed the question:
+
+### "Can I make *Claude Code* do it — and never log into the cluster myself?"
+
+…then I pulled up my wallet. *(more on that later.)*
+]
+]
+
+???
+
+- Personal stakes: a lift I'd avoided; reframed as "make the AI do it."
+- Wallet line is a deliberate tease for the cost bookend (slide 18). No number here.
+
+---
+
+# Move 2 · …and it did
+
+.boxed-content[
+A **YODA / DataLad** superdataset, driven end-to-end by an agent:
+
+.center[`SLURM job array` &rarr; `reconcile` site branches &rarr; `audit` annex &rarr; `publish overlay`]
+
+- ~2,200 subjects · 43 sites · fMRIPrep 25.2.4 on **Curnagl** (UNIL HPC)
+- every run wrapped in `datalad containers-run` — **full provenance**
+- it even **detected and recovered "ghost" subjects** (lost data) on its own
+]
+
+![:img ABIDE project timeline, Feb to Apr 2026, 100%](images/abide-timeline.png)
+
+???
+
+- "Show the SLURM/DataLad chain" — the automated pipeline IS the proof of delegation.
+- This is the "HPC glue" my abstract promised. ~266 small commits, two months.
+
+---
+
+# Move 2 · Did the science survive?
+
+.boxed-content[
+.pull-left[
+I replicated **Abraham et al. (2017)** — autism classification from resting-state connectivity.
+
+**The preprocessing choice (C-PAC vs fMRIPrep) explained &lt; 1 % of the accuracy gap.**
+
+A real, defensible result — produced mostly by an agent.
+]
+.pull-right[
+**But here is the part that matters:**
+
+it only held together because **I was watching the whole time** —
+
+reading the diffs, catching the ghosts, sanity-checking every number.
+
+*Delegation, not abdication.*
+]
+]
+
+.center[*That vigilance is the whole next move.*]
+
+???
+
+- One line on the result, then pivot hard to the caveat → bridge into Move 3 (grounding).
+
+---
 template: title
 
 .center.middle.black[
