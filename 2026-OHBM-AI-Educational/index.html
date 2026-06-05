@@ -362,6 +362,112 @@ reading the diffs, catching the ghosts, sanity-checking every number.
 - One line on the result, then pivot hard to the caveat → bridge into Move 3 (grounding).
 
 ---
+
+# Move 3 · Grounding, measured
+
+.boxed-content[
+.pull-left[
+To test this, I built a **289-page knowledge base** on diffusion-MRI preprocessing — curated mostly **by LLM agents.**
+
+- humans **dump** raw notes; agents **curate** structured pages
+- every claim must **cite its source**
+- a **deterministic linter** checks the schema on every commit
+]
+.pull-right[
+**Ben taught you RAG.**
+
+Here it is **measured** — on real neuroimaging code, with real failure modes and real costs.
+]
+]
+
+.center[*Every win and failure that follows is a real `git` commit.*]
+
+???
+
+- Centerpiece intro. "humans dump, agents curate" is the load-bearing design choice.
+
+---
+
+# Move 3 · Where it goes wrong
+
+.boxed-content[
+I asked an agent a **trap question:**
+*"Which QSIPrep flag writes outputs in MNI space?"*
+
+.pull-left[
+**What it confidently answered**
+
+`qsiprep … --output-spaces`
+`MNI152NLin2009cAsym`
+]
+.pull-right[
+**The truth**
+
+QSIPrep has **no `--output-spaces` flag** — that is fMRIPrep's. The premise was false, and the model played along.
+]
+]
+
+.center[*Fluent. Confident. Wrong.* — caught and corrected in commit `91048ab`.]
+
+???
+
+- One vivid false claim (per direction). The premise itself is false; the model invents the flag.
+
+---
+
+# Move 3 · Same question, three ways
+
+.boxed-content[
+<div class="asciicast" id="qsiprep-hallucination"></div>
+]
+
+.center[No grounding · open web · the curated wiki — watch what each does with the false premise.]
+
+???
+
+- Plays images/qsiprep-hallucination.cast. Fallback: narrate the three arms live.
+
+---
+
+# Move 3 · RAG, measured
+
+![:img Hallucination, cost and latency across three grounding regimes, 100%](images/qsiprep-arms.png)
+
+.center[
+**No grounding:** always wrong, but cheap. &nbsp; **Open web:** accurate — yet ~15&times; the cost and ~9&times; slower.
+<br />**Curated wiki:** **0% wrong**, at ~40% of the web's cost and a quarter of its latency.
+]
+
+???
+
+- The hinge for the cost bookend: grounding makes a cheap model reliable.
+
+---
+
+# Move 3 · What actually caught it
+
+.boxed-content[
+.pull-left[
+**The rule that killed the hallucination:**
+
+> cite a source, or it doesn't ship.
+
+Try to add the citation and a made-up flag has **nowhere to hide.** *(A deterministic linter — not an LLM — enforces this in CI.)*
+
+**But the LLM never caught _this_:** a silent **ordering bug** — motion correction fit against a still-distorted reference. The grounding rule made *me* read the code closely enough to see it.
+]
+.pull-right[
+![:img dMRIPrep F0080 ordering bug, 92%](images/dmriprep-f0080.png)
+]
+]
+
+.center[*Human-in-the-loop — enforced by structure.*]
+
+???
+
+- Three guardrails: source-grounding rule (core), deterministic linter (one line), human/F0080 (diagram).
+
+---
 template: title
 
 .center.middle.black[
