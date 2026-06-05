@@ -468,6 +468,96 @@ Try to add the citation and a made-up flag has **nowhere to hide.** *(A determin
 - Three guardrails: source-grounding rule (core), deterministic linter (one line), human/F0080 (diagram).
 
 ---
+
+# Set up your project for the agent
+
+.boxed-content[
+The discipline that made the wiki reliable is just **three files and a habit:**
+
+**1 · A constitution** — `CLAUDE.md` / `AGENTS.md`
+the rules, scope and conventions the agent must follow.
+
+**2 · Memory &amp; a log** — decisions and every action, appended as you go.
+*(Poldrack prescribes exactly this — I arrived at it independently.)*
+
+**3 · Small, semantic commits** — so every change is reviewable and revertible.
+]
+
+.center[*Provenance and reviewability stop being extra work — they become the substrate.*]
+
+???
+
+- Principles only, no code. AGENTS.md = the vendor-neutral equivalent of CLAUDE.md.
+
+---
+
+# …then remember you work with humans
+
+.boxed-content[
+An AI can write a **2,000-line pull request in four minutes.**
+That cost doesn't vanish — it lands on whoever has to **review** it.
+
+- **Keep PRs small and curated** — reviewable by a human, not a wall of generated diff.
+- **Trace every change to an issue** — no unsolicited mega-PRs nobody asked for.
+- **Write your own commit &amp; PR messages** — concise and honest, not AI slop.
+- **Never paste secrets or unlicensed code** into a prompt.
+]
+
+.center[*You own every line — including the social cost of shipping it.*]
+
+???
+
+- The open-source social contract. Especially pointed for an audience building shared tools.
+
+---
+
+# The catch nobody puts on a slide
+
+.boxed-content[
+.pull-left[
+This is **expensive**, and the bill is **uneven.**
+
+PIs can afford the premium tiers. PhD students and postdocs get pushed to the cheapest. **Open Science — and whole regions — risk being priced out.**
+]
+.pull-right[
+**But remember the experiment:**
+
+a **grounded cheap model hit 0%** where an ungrounded one failed every time.
+
+**Structure is a democratizing lever.** Local models may help — today they're dwarfed by the frontier, but closing that gap is the work.
+]
+]
+
+.center[*Cheaper, grounded, reproducible — that isn't a compromise. It's the goal.*]
+
+???
+
+- Cost bookend-back; reuses the experiment as the hopeful hinge. Extends Brent's "profit-driven" point.
+
+---
+
+# The one thing to take home
+
+.boxed-content[
+| The guardrail | What it caught |
+|---|---|
+| **Cite a source, or it doesn't ship** | the invented `--output-spaces` flag |
+| **A deterministic check in CI** | schema drift, broken links |
+| **A human reading the architecture** | the silent F0080 ordering bug |
+| **Version control + a decision log** | the entire audit trail |
+]
+
+.center[
+### Structure turns LLM *speed* into **trustworthy speed.**
+
+Read the book &middot; [bettercodebetterscience.github.io](https://bettercodebetterscience.github.io/book/index.html) &middot; *questions?*
+]
+
+???
+
+- Synthesis table (guardrail ↔ failure) + the through-line CTA. Book URL stays up for Q&A.
+
+---
 template: title
 
 .center.middle.black[
