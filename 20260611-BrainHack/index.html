@@ -71,18 +71,36 @@ layout: true
 
 ---
 
-# The problem: analytical variability
+# Why standardizing?
 
-<p align="center">
-<img src="../assets/narps.png" width="60%" /><br /><br />
-(<a href="https://doi.org/10.1038/s41586-020-2314-9">Botvinik-Nezer et al., 2020</a>)
-</p>
+.boxed-content[
+.distribute[
+* Increase reliability -- classic test theory:
+  * Repetition
+  * Standardization
 
-???
+* Other
+  * Pushing the *truck factor* above 1.0.
+  * Engage users
 
-Neuroimaging research faces a critical challenge: the same dataset analyzed by different labs with different preprocessing pipelines can yield completely different results.
+*Standardized Preprocessing in Neuroimaging: Enhancing Reliability and Reproducibility* doi:[10.31219/osf.io/42bsu](https://doi.org/10.31219/osf.io/42bsu), chapter 3.1 of *Methods for analyzing large neuroimaging datasets* doi:[10.17605/OSF.IO/D9R3X](https://doi.org/10.17605/OSF.IO/D9R3X) edited by R. Whelan and H. Lemaître.
+]]
 
-This analytical variability undermines the reproducibility and reliability of our findings.
+---
+
+# Facets to standardize
+
+.boxed-content[
+.distribute.large[
+* **Outer interface** (inputs and outputs). Also, consider an internal data structure format for high throughput.
+* **Implementation** (WDL vs. programmed): code styling, best practices, BIDS-Apps.
+* **Modularize** (see *NiPreps* and *TemplateFlow*).
+* Use **containers** to ensure software delivery and reproducibility.
+* Implement testing and **continuous integration** to catch errors early and streamline development.
+* **Version** the workflow and its components to ensure compatibility and track changes, issue **LTS**.
+* Promote **community** and social standardization through collaboration, documentation, telemetry, and open-source practices.
+* **Visual reporting**
+]]
 
 ---
 
@@ -107,13 +125,13 @@ From data acquisition through quality control, preprocessing, feature extraction
 # "Analysis-grade" data
 
 .larger[
-The *NeuroImaging PREProcessing toolS* (*[NiPreps](https://nipreps.org).org*) augment scanners to produce *analysis-grade* data.
+The *NeuroImaging PREProcessing toolS* (*[NiPreps](https://nipreps.org).org*) augment scanners to produce *analysis-grade* data (= **directly consumable by analyses**)
 ]
 
 <br />
 .pull-left[
 
-***Analysis-grade* data** is like "*sushi-grade fish*":
+***Analysis-grade* data** is an analogy to the concept of "*sushi-grade (or [sashimi-grade](https://en.wikipedia.org/wiki/Sashimi)) fish*" in that both are:
 
 .large[**minimally preprocessed**,]
 
@@ -123,7 +141,7 @@ and
 ]
 
 .pull-right[
-<img align="right" style='margin-right: 50px' src="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/nipreps-transparent.png" width="80%" />
+<img align="right" style='margin-right: 50px' src="https://1.bp.blogspot.com/-Osh4H4WXka0/WlMJmVgkZTI/AAAAAAAAEMY/GynUzSomJ-EBiyqv2m-maiOyKSM7SOmNACLcBGAs/s400/yellowfin%2Btuna%2Bsteaks%2Bnutrition.jpg" />
 ]
 
 ---
@@ -132,19 +150,25 @@ class: stepwise-svg
 # NiPreps ecosystem
 
 <p align="center">
-<img src="../assets/nipreps-chart.svg" width="70%" /><br />
+<img src="../assets/nipreps-chart.svg" width="63%" /><br />
+<em>NiPreps</em> (<a href="https://doi.org/10.31219/osf.io/ujxp6">Esteban et al., 2020</a>)
 </p>
 
-???
+---
 
-NiPreps is not a single tool but a growing ecosystem of specialized preprocessing pipelines.
+# BIDS-Apps: subject-wise parallelization
 
-fMRIPrep handles functional MRI. SMRIPrep tackles anatomical images. dMRIPrep processes diffusion data. And more are coming.
+<p align="center">
+<a href="https://doi.org/10.1371/journal.pcbi.1005209">
+<img src="../assets/journal.pcbi.1005209.g002.png" width="90%" /><br /><br />
+(Gorgolewski et al., 2017)
+</a>
+</p>
 
 ---
 class: stepwise-svg
 
-# fMRIPrep: despite minimal, highly complex
+# fMRIPrep: despite minimal, a complex workflow
 
 .boxed-content.center[
 <object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
@@ -158,80 +182,43 @@ There's motion correction, distortion correction, brain extraction, registration
 
 ---
 
-# The individual report
+## The individual report
 
 <p align="center">
 <video controls="controls" width="70%"
        name="Video Name" src="https://www.nipreps.org/assets/fmriprep-report.mov"></video>
 </p>
 
-???
-
-Every participant gets an interactive report showing exactly what the pipeline did.
-
-You can inspect brain extraction, registration quality, and motion patterns—visual quality assurance.
-
 ---
 
-# fMRIPrep adoption (weekly)
+# fMRIPrep's usage
 
 <p align="center">
-<img src="https://github.com/nipreps/fmriprep_stats/releases/latest/download/weekly.png" width="90%" /><br />
+<img src="https://github.com/nipreps/fmriprep_stats/releases/latest/download/weekly.png" width="85%" /><br />
 </p>
-
-???
-
-These are real-time statistics from our GitHub releases.
-
-fMRIPrep is now used in thousands of studies worldwide, and adoption continues to grow.
 
 ---
 
-# fMRIPrep: version management
+# fMRIPrep's usage
 
 <p align="center">
-<img src="https://github.com/nipreps/fmriprep_stats/releases/latest/download/versionstream.png" width="90%" /><br />
+<img src="https://github.com/nipreps/fmriprep_stats/releases/latest/download/versionstream.png" width="85%" /><br />
 </p>
-
-.larger[
-<i class="fa-solid fa-circle-right"></i> Exact versions matter for reproducibility
-
-<i class="fa-solid fa-circle-right"></i> Long-term support (LTS) program
-]
-
-???
-
-We track semantic versioning carefully. If you report which version you used, others can exactly reproduce your work.
 
 ---
 
-# TemplateFlow: standardized brain templates
+# *TemplateFlow*
 
 <p align="center">
 <img src="https://www.templateflow.org/assets/templateflow_fig-birdsview.png" width="60%" /><br />
 (<a href="https://doi.org/10.1038/s41592-022-01681-2">Ciric et al., 2022</a>)
 </p>
 
-???
-
-Brain registration requires standard templates. TemplateFlow provides 80+ curated templates in a FAIR format.
-
-No more hunting through 10 different websites for a template—it's all organized and versioned.
-
 ---
 
-# Quality assurance and control
+# *TemplateFlow* | Client
 
-<p align="center">
-<img src="../assets/mriqc-paper.png" width="70%" /><br />
-(<a href="http://doi.org/10.1371/journal.pone.0184661">Esteban et al., 2017</a>)
-</p>
-
-???
-
-MRIQC automatically extracts image quality metrics from your raw data.
-
-This lets you identify problematic images before they bias your analysis.
+<div class="asciicast" id="501873"></div>
 
 ---
 
@@ -271,9 +258,20 @@ It's not just code—it's a collaborative effort to standardize how we do neuroi
 
 ---
 
+# Conclusion
+
+<p align="center">
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41596-020-0327-3/MediaObjects/41596_2020_327_Fig1_HTML.png?as=png" width="90%" /><br />
+(<a href="https://doi.org/10.1038/s41596-020-0327-3">Esteban et al., 2020</a>)
+</p>
+
+---
+
 .boxed-content[
 .middle.center[
-# Questions?
+# Thanks!
+
+### Questions?
 
 <a href="https://www.nipreps.org/presentations/20260611-BrainHack/">
   <object type="image/svg+xml" data="images/qr-talk-url.svg" style="width: 25%"></object>
@@ -285,6 +283,37 @@ It's not just code—it's a collaborative effort to standardize how we do neuroi
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
     <script src="../remark/core/engine.js"></script>
+    <script>
+      // Custom asciicasts using asciinema.org remote URLs
+      const allcasts = new Map();
+
+      slideshow.on('afterShowSlide', function (slide) {
+        var slideNumber = slide.getSlideIndex();
+        var element = document.getElementsByClassName("remark-visible")[0].getElementsByClassName('asciicast')
+        if (element.length == 0 ) {
+          return;
+        }
+
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).play();
+          return;
+        }
+
+        var castid = element[0].attributes["id"].value;
+        allcasts.set(slideNumber, AsciinemaPlayer.create(
+            'https://asciinema.org/a/' + castid + '.cast',
+            document.getElementById(castid),
+            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 17 }
+        ));
+      });
+
+      slideshow.on('beforeHideSlide', function (slide) {
+        var slideNumber = slide.getSlideIndex();
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).pause();
+        }
+      });
+    </script>
     <script src="../remark/ext/svg-theme.js"></script>
     <script src="../remark/ext/stepwise-svg.js"></script>
     <script src="../remark/ext/nav-controls.js"></script>
