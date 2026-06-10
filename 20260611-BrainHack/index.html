@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BrainHack 2026: NiPreps TrainTrack</title>
+    <meta charset="utf-8">
+    <meta name="grammarly" content="false">
+    <meta name="google" content="notranslate">
+    <link rel="stylesheet" type="text/css" href="../remark/vendor/asciinema-player/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../remark/core/base.css" />
+    <link rel="stylesheet" type="text/css" href="../remark/themes/nipreps.css" />
+    <link rel="stylesheet" href="../remark/ext/nav-controls.css" />
+  </head>
+  <body>
+<style>:root { --logo-url: url("../assets/logo_nipreps.png"); }</style>
+<script src="../remark/vendor/asciinema-player/asciinema-player.min.js"></script>
+<script src="https://kit.fontawesome.com/015d4b01de.js" crossorigin="anonymous"></script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true},
+      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+      TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+      autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+<textarea id="source">
+
+name: title
+layout: true
+class: center
+---
+layout: false
+count: false
+
+.middle.center[
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/nipreps-transparent.png" width="80%" />
+</p>
+
+## Open and robust preprocessing pipelines across diverse neuroimaging data
+
+<br />
+<br />
+
+### Martin Nørgaard
+#### University of Copenhagen
+
+###### [www.nipreps.org/presentations/20260611-BrainHack](https://www.nipreps.org/presentations/20260611-BrainHack/)
+]
+
+---
+name: newsection
+layout: true
+
+.perma-sidebar[
+<p class="rotate">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  <span style="padding-left: 10px; font-weight: 600;">BrainHack 2026 — TrainTrack (Jun 11th, 2026)</span>
+</p>
+]
+
+---
+
+# Why standardize preprocessing?
+
+.boxed-content[
+.distribute.large[
+* **Make results comparable**  
+  The same data should lead to the same kind of derivatives.
+
+* **Make workflows inspectable**  
+  Choices should be explicit, documented, and testable.
+
+* **Make tools sustainable**  
+  Shared standards reduce single-expert bottlenecks.
+]]
+
+<span style="font-size: 70%">Source: *Standardized Preprocessing in Neuroimaging* doi:[10.31219/osf.io/42bsu](https://doi.org/10.31219/osf.io/42bsu).</span>
+
+???
+
+The simple version: standardization reduces avoidable variation.
+
+Classic reliability says repetition helps, but repetition only teaches us something when the procedure is stable enough to compare.
+
+For NiPreps, standardization is also social: users know what to expect, developers know where to plug in, and the project is less dependent on one person remembering every decision.
+
+This framing follows chapter 3.1 of *Methods for analyzing large neuroimaging datasets* doi:[10.17605/OSF.IO/D9R3X](https://doi.org/10.17605/OSF.IO/D9R3X), edited by R. Whelan and H. Lemaître.
+
+---
+
+# What can we standardize?
+
+.boxed-content[
+.distribute.large[
+* **Data contract:** BIDS inputs, derivative outputs, metadata.
+
+* **Execution:** containers and BIDS-Apps.
+
+* **Modules:** reusable workflow pieces.
+
+* **Evidence:** tests, CI, visual reports.
+
+* **Release practice:** versions, LTS, docs, telemetry.
+]]
+
+???
+
+These are different layers of the same idea.
+
+The outer interface is what users experience: where data goes in and what comes out.
+
+Containers and BIDS-Apps standardize execution. Modular pieces standardize implementation. Tests and reports standardize quality control. Versioning, documentation, and telemetry standardize how the community coordinates over time.
+
+---
+
+# The research workflow
+
+.boxed-content[
+<object type="image/svg+xml" data="../assets/neuroimaging-workflow-large.svg" style="width: 100%; padding-top: 20pt;"></object>
+
+.center[
+[Esteban et al., (2020)](http://doi.org/10.1038/s41596-020-0327-3)
+]
+]
+
+???
+
+Preprocessing is not optional—it's a critical step that transforms raw scanner output into analysis-ready data.
+
+From data acquisition through quality control, preprocessing, feature extraction, and final statistical modeling: each step matters.
+
+---
+
+# "Analysis-grade" data
+
+.larger[
+The *NeuroImaging PREProcessing toolS* (*[NiPreps](https://nipreps.org).org*) augment scanners to produce *analysis-grade* data (= **directly consumable by analyses**)
+]
+
+<br />
+.pull-left[
+
+***Analysis-grade* data** is an analogy to the concept of "*sushi-grade (or [sashimi-grade](https://en.wikipedia.org/wiki/Sashimi)) fish*" in that both are:
+
+.large[**minimally preprocessed**,]
+
+and
+
+.large[**safe to consume** directly.]
+]
+
+.pull-right[
+<img align="right" style='margin-right: 50px' src="https://1.bp.blogspot.com/-Osh4H4WXka0/WlMJmVgkZTI/AAAAAAAAEMY/GynUzSomJ-EBiyqv2m-maiOyKSM7SOmNACLcBGAs/s400/yellowfin%2Btuna%2Bsteaks%2Bnutrition.jpg" />
+]
+
+---
+class: stepwise-svg
+
+# NiPreps ecosystem
+
+<p align="center">
+<img src="https://www.nipreps.org/identity/nipreps-general/nipreps-chart.svg" width="63%" /><br />
+<em>NiPreps</em> (<a href="https://doi.org/10.31219/osf.io/ujxp6">Esteban et al., 2020</a>)
+</p>
+
+---
+
+# BIDS-Apps: subject-wise parallelization
+
+<p align="center">
+<a href="https://doi.org/10.1371/journal.pcbi.1005209">
+<img src="../assets/journal.pcbi.1005209.g002.png" width="90%" /><br /><br />
+(Gorgolewski et al., 2017)
+</a>
+</p>
+
+---
+class: stepwise-svg
+
+# fMRIPrep: despite minimal, a complex workflow
+
+.boxed-content.center[
+<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
+]
+
+???
+
+Just preprocessing is complex.
+
+There's motion correction, distortion correction, brain extraction, registration to templates, nuisance signal identification—each step with many algorithmic choices.
+
+---
+
+## The individual report
+
+<p align="center">
+<video controls="controls" width="70%"
+       name="Video Name" src="https://www.nipreps.org/assets/fmriprep-report.mov"></video>
+</p>
+
+---
+
+# fMRIPrep's usage
+
+<p align="center">
+<img src="https://github.com/nipreps/fmriprep_stats/releases/latest/download/weekly.png?v=today" width="85%" /><br />
+</p>
+
+---
+
+# fMRIPrep's usage
+
+<p align="center">
+<img src="https://github.com/nipreps/fmriprep_stats/releases/latest/download/versionstream.png?v=today" width="85%" /><br />
+</p>
+
+---
+
+# *TemplateFlow*
+
+<p align="center">
+<img src="https://www.templateflow.org/assets/templateflow_fig-birdsview.png" width="60%" /><br />
+(<a href="https://doi.org/10.1038/s41592-022-01681-2">Ciric et al., 2022</a>)
+</p>
+
+---
+
+# *TemplateFlow* | Client
+
+<div class="asciicast" id="501873"></div>
+
+---
+
+# Getting started
+
+.boxed-content.larger.no-bullet[
+
+* .large[<i class="fa-solid fa-link"></i>] [**nipreps.org**](https://www.nipreps.org) — Overview and documentation
+
+* .large[<i class="fa-solid fa-book"></i>] [**fMRIPrep guide**](https://fmriprep.org) — Installation and usage
+
+* .large[<i class="fa-solid fa-database"></i>] [**OpenNeuro**](https://openneuro.org) — Public datasets to test with
+
+* .large[<i class="fa-solid fa-cube"></i>] [**BIDS**](https://bids-standard.github.io/bids-standard/) — Learn the data format
+
+]
+
+???
+
+Everything is open source and free to use.
+
+Start small: download an open dataset, organize it in BIDS format, and run fMRIPrep.
+
+---
+
+# The NiPreps community
+
+.boxed-content.center[
+<img style="width: 90%" src="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/nipreps-members.png" />
+]
+
+???
+
+NiPreps is built by a community of 100+ researchers worldwide.
+
+It's not just code—it's a collaborative effort to standardize how we do neuroimaging.
+
+---
+
+# Conclusion
+
+<p align="center">
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41596-020-0327-3/MediaObjects/41596_2020_327_Fig1_HTML.png?as=png" width="90%" /><br />
+(<a href="https://doi.org/10.1038/s41596-020-0327-3">Esteban et al., 2020</a>)
+</p>
+
+---
+
+.boxed-content[
+.middle.center[
+# Thanks!
+
+### Questions?
+
+<a href="https://www.nipreps.org/presentations/20260611-BrainHack/">
+  <object type="image/svg+xml" data="images/qr-talk-url.svg" style="width: 25%"></object>
+  <br />
+  www.nipreps.org/presentations/20260611-BrainHack/
+</a>
+]
+]
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script src="../remark/core/engine.js"></script>
+    <script>
+      // Custom asciicasts using asciinema.org remote URLs
+      const allcasts = new Map();
+
+      slideshow.on('afterShowSlide', function (slide) {
+        var slideNumber = slide.getSlideIndex();
+        var element = document.getElementsByClassName("remark-visible")[0].getElementsByClassName('asciicast')
+        if (element.length == 0 ) {
+          return;
+        }
+
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).play();
+          return;
+        }
+
+        var castid = element[0].attributes["id"].value;
+        allcasts.set(slideNumber, AsciinemaPlayer.create(
+            'https://asciinema.org/a/' + castid + '.cast',
+            document.getElementById(castid),
+            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 17 }
+        ));
+      });
+
+      slideshow.on('beforeHideSlide', function (slide) {
+        var slideNumber = slide.getSlideIndex();
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).pause();
+        }
+      });
+    </script>
+    <script src="../remark/ext/svg-theme.js"></script>
+    <script src="../remark/ext/stepwise-svg.js"></script>
+    <script src="../remark/ext/nav-controls.js"></script>
+  </body>
+</html>
