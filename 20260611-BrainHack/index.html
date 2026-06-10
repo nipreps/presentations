@@ -71,36 +71,56 @@ layout: true
 
 ---
 
-# Why standardizing?
-
-.boxed-content[
-.distribute[
-* Increase reliability -- classic test theory:
-  * Repetition
-  * Standardization
-
-* Other
-  * Pushing the *truck factor* above 1.0.
-  * Engage users
-
-*Standardized Preprocessing in Neuroimaging: Enhancing Reliability and Reproducibility* doi:[10.31219/osf.io/42bsu](https://doi.org/10.31219/osf.io/42bsu), chapter 3.1 of *Methods for analyzing large neuroimaging datasets* doi:[10.17605/OSF.IO/D9R3X](https://doi.org/10.17605/OSF.IO/D9R3X) edited by R. Whelan and H. Lemaître.
-]]
-
----
-
-# Facets to standardize
+# Why standardize preprocessing?
 
 .boxed-content[
 .distribute.large[
-* **Outer interface** (inputs and outputs). Also, consider an internal data structure format for high throughput.
-* **Implementation** (WDL vs. programmed): code styling, best practices, BIDS-Apps.
-* **Modularize** (see *NiPreps* and *TemplateFlow*).
-* Use **containers** to ensure software delivery and reproducibility.
-* Implement testing and **continuous integration** to catch errors early and streamline development.
-* **Version** the workflow and its components to ensure compatibility and track changes, issue **LTS**.
-* Promote **community** and social standardization through collaboration, documentation, telemetry, and open-source practices.
-* **Visual reporting**
+* **Make results comparable**  
+  The same data should lead to the same kind of derivatives.
+
+* **Make workflows inspectable**  
+  Choices should be explicit, documented, and testable.
+
+* **Make tools sustainable**  
+  Shared standards reduce single-expert bottlenecks.
 ]]
+
+<span style="font-size: 70%">Source: *Standardized Preprocessing in Neuroimaging* doi:[10.31219/osf.io/42bsu](https://doi.org/10.31219/osf.io/42bsu).</span>
+
+???
+
+The simple version: standardization reduces avoidable variation.
+
+Classic reliability says repetition helps, but repetition only teaches us something when the procedure is stable enough to compare.
+
+For NiPreps, standardization is also social: users know what to expect, developers know where to plug in, and the project is less dependent on one person remembering every decision.
+
+This framing follows chapter 3.1 of *Methods for analyzing large neuroimaging datasets* doi:[10.17605/OSF.IO/D9R3X](https://doi.org/10.17605/OSF.IO/D9R3X), edited by R. Whelan and H. Lemaître.
+
+---
+
+# What can we standardize?
+
+.boxed-content[
+.distribute.large[
+* **Data contract:** BIDS inputs, derivative outputs, metadata.
+
+* **Execution:** containers and BIDS-Apps.
+
+* **Modules:** reusable workflow pieces.
+
+* **Evidence:** tests, CI, visual reports.
+
+* **Release practice:** versions, LTS, docs, telemetry.
+]]
+
+???
+
+These are different layers of the same idea.
+
+The outer interface is what users experience: where data goes in and what comes out.
+
+Containers and BIDS-Apps standardize execution. Modular pieces standardize implementation. Tests and reports standardize quality control. Versioning, documentation, and telemetry standardize how the community coordinates over time.
 
 ---
 
