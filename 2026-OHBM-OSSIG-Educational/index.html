@@ -10,9 +10,46 @@
   <link rel="stylesheet" type="text/css" href="../remark/themes/ohbm2026.css" />
   <link rel="stylesheet" href="../remark/ext/roulette.css" />
   <link rel="stylesheet" href="../remark/ext/nav-controls.css" />
-</head>
 
-<body>
+<style>
+@page {
+  size: 1210px 681px;
+  margin: 0;
+}
+.title-slide .pull-right {
+  width: 55%;
+}
+.title-slide .pull-left {
+  margin-left: 0;
+}
+
+.title-slide a {
+  color: #a0a0a0
+}
+.title-slide
+
+@media print {
+  .remark-slide-scaler {
+    width: 100% !important;
+    height: 100% !important;
+    transform: scale(1) !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+}
+.table-compact .compare { width:100%; border-collapse: collapse; font-size: 0.9em; }
+.table-compact .compare th, .table-compact .compare td { padding: .45rem .6rem; border-bottom: 1px solid #e6e6e6; vertical-align: top; }
+.table-compact .compare th { text-align: left; white-space: nowrap; }
+.legend { margin-top: .5rem; font-size: .85em; color: #666; }
+
+figcaption {
+    text-align: left;
+}
+th{background-color: white;}
+tr:nth-child(odd) {background-color: #f2f2f2;}
+    .center-items table { margin-left: auto; margin-right: auto }
+</style>
+
 <script src="../remark/vendor/asciinema-player/asciinema-player.min.js"></script>
 <script src="https://kit.fontawesome.com/015d4b01de.js" crossorigin="anonymous"></script>
 <script type="text/javascript"
@@ -33,8 +70,9 @@
     }
   });
 </script>
+</head>
 
-
+<body>
 <textarea id="source">
 name: title
 layout: true
@@ -44,10 +82,8 @@ count: false
 counter: false
 
 
-.boxed-content[
-
-.pull-left.center[
-  <img src="../remark/assets/ohbm2026-logo.png" width="130%" />
+.pull-left[
+  <img src="../remark/assets/ohbm2026-logo.png" width="110%" style="margin-top: 2%;" />
 ]
 
 .pull-right.center[
@@ -57,18 +93,18 @@ counter: false
 <br />
 <br />
 
+.boxed-content[
 # Compute Once, Reuse Forever
 
 ## Sustainable Science with NiPreps
 
 *Christopher J. Markiewicz*
-]
 
+.smaller[&lt;markiewicz@stanford.edu&gt;]
 ]
-
+]
 
 ???
-
 ---
 name: nofooter
 layout: true
@@ -76,7 +112,7 @@ layout: true
 .perma-sidebar[
 <p class="rotate">
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
-  <span style="padding-left: 10px; font-weight: 600;">OHBM Educational — NiPreps (June 14<sup>th</sup>, 2026)</span>
+  <span style="padding-left: 10px; font-weight: 600;">Compute Once, Reuse Forever &mdash; OHBM Educational (June 14<sup>th</sup>, 2026)</span>
 </p>
 ]
 
@@ -214,7 +250,7 @@ Especially pronounced when combining across datasets.
 
 * **Robust**: Work on a wide variety of inputs without failing.
 * **Standardized**: It applies the same logic to every dataset.
-* **Transparent**: Fully inspectable and reproducible.
+* **Transparent**: Reproducible and *inspectable*.
 
 ???
 
@@ -223,7 +259,7 @@ Especially pronounced when combining across datasets.
 # fMRIPrep is robust, standardized, and minimal
 
 .boxed-content.center[
-<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
+<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 74%;"></object>
 ]
 
 ???
@@ -237,7 +273,7 @@ class: stepwise-svg
 # fMRIPrep is robust, standardized, and minimal
 
 .boxed-content.center[
-<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 75%;"></object>
+<object type="image/svg+xml" data="../assets/fmriprep-natmeth-fig01-inkscape.svg" style="width: 74%;"></object>
 ]
 
 ???
@@ -352,14 +388,34 @@ exclude: true
 
 ???
 
-
-
 * Concept: We separate expensive computation from flexible application.
 * FIT (Compute-Heavy): Run once. Example: Calculating the complex nonlinear registration from a subject's T1w to a template. This is slow and difficult. The result is a set of warp files.
 * TRANSFORM (Lightweight): Run as needed. Example: Using that warp to resample a BOLD file into the template space. This is fast and easy.
 * Key Message: NiPreps does the heavy "fitting" for you. You can then perform the lightweight "transform" to any space you need, on demand.
 
 ---
+
+# Fit+transform makes efficient use of limited resources
+
+.boxed-content[
+.larger[*Minimal mode* (added in 23.2) excludes ouptuts that can be regenerated deterministically.]
+
+<img src="images/fit_derivs.png" width="100%" />
+
+File counts in minimal mode reduced by 32% over the previous version, and total file size by 83%.
+]
+
+--
+
+.boxed-content[
+<img src="./images/fit_derivs_and_scratch.png" width="100%" />
+
+Including the work directory, file counts dropped by 78% and total size by 89%.
+
+]
+
+---
+exclude: true
 
 # NiPreps and the FAIR principles
 
@@ -378,44 +434,145 @@ counter: false
 
 # Perspective: Dataset creators
 
-* Goal: Maximize impact.
-* Action: Run fMRIPrep. Share raw BIDS data + the minimal "fit" derivatives (warps, confounds, reports).
-* Their job ends here. They have produced a highly valuable, reusable, and compact asset.
+.boxed-content.larger[
+  You're getting ready to share your dataset so others can reproduce your results and run their own (meta-)analyses.
+
+  Sharing derivatives saves computation and reduces scope of methodological variation.
+
+  <br />
+]
+
+--
+
+.larger[
+  **Options**
+
+Share full derivatives &nbsp;
+  <i class="fa-solid fa-circle-right"></i> &nbsp; Straightforward, familiar, might run into space limits
+]
+
+--
+
+.larger[
+Share raw data and minimal derivatives &nbsp;
+  <i class="fa-solid fa-circle-right"></i> &nbsp; More space efficient, may need to update scripts
+]
+
+--
+
+.larger[
+**Tip**
+
+Register to a couple common templates &nbsp;
+  <i class="fa-solid fa-circle-right"></i> &nbsp; Good storage to benefit trade-off
+]
+
 ---
 
 # Perspective: Secondary analyst
 
-* Goal: Use that shared data for a new analysis.
-* The Question: How do we actually use these minimal derivatives? What does it look like to perform the "transform" step ourselves?
+.boxed-content[
+
+.larger[
+  You've found a dataset with minimal derivatives. Well now what?
+]
+
+.center.large[https://github.com/nipreps/fmriprep-resampling-demo]
+
+
+<br />
+<br />
+]
+
+--
+
+.larger[
+**Options**
+
+Run fMRIPrep with derivatives as inputs &nbsp;
+  <i class="fa-solid fa-circle-right"></i> &nbsp; Recreate full results, some unnecessary computation
+]
+
+--
+
+.larger[
+Resample data in your script or workflow &nbsp;
+  <i class="fa-solid fa-circle-right"></i> &nbsp; Only necessary outputs, some assembly required
+]
+
+--
+
+.larger[
+Use fMRIPost workflows &nbsp;
+  <i class="fa-solid fa-circle-right"></i> &nbsp; Accept minimal derivatives, if they do what you want
+]
 
 ---
 
-# Perspective: Secondary analyst - Demo
+# Perspective: Data archivist / system administrator
 
----
+.larger[
+  You manage a data archive or compute cluster for your lab or institute.
+  Storing full derivatives is becoming costly, and many datasets are rarely accessed.
 
-# Perspective: Secondary analyst - Wrap-up
+<br />
+]
 
-* The Problem: How did I know that my Python environment had the right version of nitransforms? How do we run that fmriprep command from Part 1?
-* The Answer: Environment management (lock-files, containers)
+--
 
----
+.larger[
+**Options**
 
-# Perspective: Data archivist
+Store minimal derivatives &nbsp;
+  <i class="fa-solid fa-circle-right"></i> &nbsp; A clear win, but more user support may be needed
+]
+
+--
+
+.larger[
+**Tip**
+
+Full derivatives can be recomputed and cached &nbsp;
+  <i class="fa-solid fa-circle-right"></i> &nbsp; Savings with heavily/widely-used datasets
+]
+
+--
+
+.larger[
+
+Workflow engines may have caching facilities &nbsp;
+  <i class="fa-solid fa-circle-right"></i> &nbsp; With a global cache, the first user pays the cost
+]
+
+???
 
 * Goal: Balance cost and value.
 * The Takeaway: "Having seen how powerful and flexible the minimal 'fit' derivatives are, the archivist's choice is clear. Storing these small warp files instead of huge, pre-resampled 4D images is a massive win for storage costs, transfer bandwidth, and long-term reusability."
+
+* QR
 
 ---
 
 # Compute Once, Reuse Forever
 
-* Our live demo is sustainability in action. We avoided re-running the expensive "fit" step.
-* Store Smart, Not Big: The archivist saves energy on storage and transfer by holding the minimal derivatives.
+.boxed-content.larger[
+* Heterogeneous, open datasets provide opportunities for novel meta-/mega-analyses
 
-* NiPreps standardizes preprocessing for heterogeneous data.
-* The "Fit+Transform" design is the key to this, separating expensive computation from flexible application.
-* This model is practical (as we just saw!), promotes FAIR principles, and enables a more sustainable research lifecycle.
+* NiPreps pipelines can control flexibility with standardized, robust preprocessing
+
+* The fit+transform model enables efficient sharing of data that balances
+  reproducibility and storage/bandwidth costs
+]
+
+???
+
+
+---
+
+.section-mark.center[
+# Thank you!
+
+]
 
 ---
 template: title
