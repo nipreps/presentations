@@ -154,6 +154,64 @@ count: false
 
 ---
 
+# Models are limited
+
+.boxed-content[
+> In QSIPrep (the diffusion MRI preprocessing pipeline by PennLINC), which exact command-line flag selects the output spaces, 
+> e.g., to also write preprocessed DWI in `MNI152NLin2009cAsym` template space?
+> Give the exact flag and a one-line example invocation. Be concise and definitive.
+]
+
+???
+
+Bridge
+
+---
+
+
+# From memory alone — it fabricates
+
+.boxed-content[
+<div style="margin-top: 15px" class="asciicast" id="grounding-1-training" data-speed="4"></div>
+]
+
+???
+
+---
+
+# Grounded on the web — right, but slow &amp; costly
+
+.boxed-content[
+<div style="margin-top: 15px" class="asciicast" id="grounding-2-web" data-cols="110" data-rows="24" data-speed="4"></div>
+]
+
+???
+
+---
+
+# Grounded on the wiki — right, fast, cheap
+
+.boxed-content[
+<div style="margin-top: 15px" class="asciicast" id="grounding-3-wiki" data-speed="8"></div>
+]
+
+???
+
+---
+
+# Measured: grounding beats a bigger search (*n*=30)
+
+.boxed-content[
+<object type="image/svg+xml" data="images/qsiprep-grounding.svg" style="width: 100%; padding-top: 40pt;"></object>
+]
+
+.center[*From memory: instant, cheap, **always wrong**. Web: right, but slow &amp; expensive. Wiki: **right, fast, cheap.***]
+
+???
+
+---
+
+
 # This is your edge, not your obituary
 
 .boxed-content[
@@ -722,78 +780,6 @@ So I built one: an **LLM-wiki** on dMRI preprocessing the agent can retrieve fro
 
 - Ben taught you RAG; here it is, built and measured for code questions.
 - The caveat is deliberate: in the wiki I *do* let the agent curate — the citation rule + linter are what make that safe.
-
----
-
-# From memory alone — it fabricates
-
-.boxed-content[
-<div style="margin-top: 15px" class="asciicast" id="grounding-1-training" data-speed="4"></div>
-]
-
-???
-
-- Parametric retrieval (model weights only). Fast, cheap, and confidently wrong every time.
-
----
-
-# Grounded on the web — right, but slow &amp; costly
-
-.boxed-content[
-<div style="margin-top: 15px" class="asciicast" id="grounding-2-web" data-cols="110" data-rows="24" data-speed="4"></div>
-]
-
-???
-
-- `WebFetch`: fixes the answer, but many turns, high token cost, brittle to what's online.
-
----
-
-# Grounded on the wiki — right, fast, cheap
-
-.boxed-content[
-<div style="margin-top: 15px" class="asciicast" id="grounding-3-wiki" data-speed="8"></div>
-]
-
-???
-
-- RAG over the curated, cited wiki: correct *and* efficient. This is the payoff of the foundation.
-
----
-class: slido
-count: false
-
-.section-mark[
-
-.slido-tag[Slido · place your bet]
-
-.slido-q[You've seen all three runs. Which is BOTH correct AND cheapest — memory, web, or wiki?]
-
-.slido-options[
-**A.** Memory &nbsp;·&nbsp; **B.** Web search &nbsp;·&nbsp; **C.** The wiki
-]
-
-.slido-join[ TODO: wire Slido event code / QR — reveal on the next slide ]
-
-]
-
-???
-
-- Live bet before the benchmark reveal. Memory = always-wrong; web = right-but-costly; wiki wins. Let them commit, then show the chart.
-
----
-
-# Measured: grounding beats a bigger search (*n*=30)
-
-.boxed-content[
-<object type="image/svg+xml" data="images/qsiprep-grounding.svg" style="width: 100%; padding-top: 40pt;"></object>
-]
-
-.center[*From memory: instant, cheap, **always wrong**. Web: right, but slow &amp; expensive. Wiki: **right, fast, cheap.***]
-
-???
-
-- Per-arm averages (from `qsiprep-hallucination.cast`): memory ≈ USD 0.02 / 12 s / 5-of-5 wrong; web ≈ USD 0.33 / 142 s / 0 wrong; wiki ≈ USD 0.09 / 28 s / 0 wrong.
 
 ---
 
