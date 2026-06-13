@@ -33,6 +33,23 @@
     .divided td { padding: 1em 0.9em; vertical-align: top;
                   border: none; border-bottom: 1px solid #ddd; }
     .divided tr:last-child th, .divided tr:last-child td { border-bottom: none; }
+    /* compact variant for denser tables (more rows) */
+    .divided.tight th, .divided.tight td { padding: 0.42em 0.8em; font-size: 0.8em; }
+    /* Material/mkdocs-style admonitions */
+    .admonition { display: flex; align-items: center; gap: .9em; text-align: left;
+                  border-radius: 6px; border-left: 5px solid #9e9e9e; background: #f3f4f6;
+                  padding: .6em 1em; margin: .6em 0; font-size: .8em; line-height: 1.45;
+                  box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .admonition > i, .admonition > svg { flex: 0 0 auto; font-size: 2.6em; color: #9e9e9e; }
+    .admonition > p { flex: 1 1 auto; margin: 0; font-size: 1.35em; }
+    .admonition.warning { border-left-color: #ff9100; background: #fff5e6; }
+    .admonition.warning > i, .admonition.warning > svg { color: #b06a00; }
+    .admonition.note    { border-left-color: #448aff; background: #eaf2ff; }
+    .admonition.note > i, .admonition.note > svg    { color: #2f6fd6; }
+    .admonition.tip     { border-left-color: #00bfa5; background: #e6f7f4; }
+    .admonition.tip > i, .admonition.tip > svg     { color: #00897b; }
+    .admonition.danger  { border-left-color: #ff1744; background: #ffebee; }
+    .admonition.danger > i, .admonition.danger > svg  { color: #c4001d; }
   </style>
 </head>
 
@@ -493,6 +510,183 @@ cheap, it did not make review cheap, and a human still owns that. The body discl
 and model, links the issue, and follows strict TDD — a failing-tests-only commit first,
 then the patch — so a reviewer sees the bug before the fix. I found the bug; the agent
 helped diagnose and implement; I read and own every line.
+
+---
+
+# Always check the contributing guidelines
+
+.boxed-content[
+
+DIPY's binding obligations are just its PR-template checklist + commit conventions + the NIPY code of conduct:
+
+.divided.tight[
+| DIPY requires | PR #4054 |
+|---|---|
+| Tests covering changes (≈100% coverage) | ✅ strict TDD — failing `TEST:` commit first, then `BF:` fix |
+| All tests pass locally / CI | ✅ CI green |
+| Follow DIPY coding style | ✅ `STYLE:` commits |
+| Commit prefixes (`BF` `RF` `NF` `TEST` `STYLE` …) | ✅ `TEST:` `BF:` `STYLE:` `RF:` |
+| "Type of Change" + labels | ✅ Bug fix · `type:bugfix` `type:testing` |
+| Link the issue | ✅ `Fixes #4053` |
+| NIPY code of conduct | ✅ |
+| AI disclosure · DCO · CLA · sign-off | ➕ none required by DIPY — disclosed anyway |
+]
+]
+
+--
+
+.boxed-content[
+<div class="admonition warning" style="margin-top: 30px">
+<i class="fa-solid fa-triangle-exclamation"></i>
+<p>Open-source projects must get ready now — and openly discuss what their AI-assisted ("vibe coding") contribution policies should be.</p>
+</div>
+]
+
+???
+
+---
+
+# The impact of vibe coding
+
+.boxed-content.larger.no-bullet[
+
+* .large[<i class="fa-solid fa-check"></i> **Problem resolved**]
+  .indent[.gray-text[Created a thorough issue report, wrote tests first, and proposed a fix]
+  ]
+  <br />
+
+* .large[<i class="fa-solid fa-scale-unbalanced"></i> **The trade off**]
+  .indent[
+  .gray-text[Am I more likely to contribute back again?]
+  ]
+  <br />
+
+* .large[<i class="fa-solid fa-person-falling-burst"></i> **Creates a new problem**]
+  .indent[
+  .gray-text[Did I learn something about DIPY? Maybe, but very little.]
+  ]
+  <br />
+]
+
+
+---
+
+# The ABIDE challenge
+
+.boxed-content[
+<br />
+<br />
+<br />
+.center[
+<img src="images/abide-timeline.png" alt="ABIDE project timeline Feb–Apr 2026: YODA dataset initialized, first batches reconciled, 872 subjects/26 sites in a day, Abraham 2017 replication pipeline, abide-runner agent; ~266 commits" style="width: 100%;" />
+]
+
+.center[
+ABIDE I + II · ~2,200 subjects · 43 sites · fMRIPrep on Curnagl (UNIL HPC)
+
+github.com/.large.larger[**oesteban/abide_fmriprep**]
+]
+]
+
+???
+
+The project I'd put off for years: run all of ABIDE — both releases, around two thousand
+two hundred subjects — through fMRIPrep on an HPC cluster. What changed this time is that
+I never logged into the cluster myself. I drove the whole thing through a coding agent from
+my laptop over about two months: it set up a YODA/DataLad dataset, submitted the jobs, and
+reconciled the results. This is exactly the glue work — the devops around a standard
+pipeline — that agents are genuinely good at.
+
+---
+count: false
+
+.boxed-content[
+<iframe src='https://wall.sli.do/event/bnbXrk8WP6djx1a7d4m88u?section=5b9e22bb-556b-433f-a3ff-0aa97c8dcc9a&integration=shared-present-mode' style="width: 100%; height: 600px; border: 0"></iframe>
+.center[<a href="https://app.sli.do/event/bnbXrk8WP6djx1a7d4m88u">Click here to participate</a>]
+]
+
+???
+
+---
+
+# A small experiment to conclude
+
+.boxed-content[
+.larger.no-bullet[
+Let's prompt Claude's models haiku, sonnet and opus, under three different contexts:
+
+- (1) from memory alone,
+- (2) grounded on the web, and
+- (3) grounded on a very simple RAG, the *LLM-wiki* (Karpathy 2026).
+]
+
+
+> In QSIPrep (the diffusion MRI preprocessing pipeline by PennLINC), which exact command-line flag selects the output spaces, 
+> e.g., to also write preprocessed DWI in `MNI152NLin2009cAsym` template space?
+> Give the exact flag and a one-line example invocation. Be concise and definitive.
+]
+
+???
+
+Bridge
+
+---
+
+
+# Test 1: force the model to work from memory alone
+
+.boxed-content[
+<div style="margin-top: 15px" class="asciicast" id="grounding-1-training" data-speed="8"></div>
+]
+
+???
+
+---
+
+# Test 2: allow the model to access the web
+
+.boxed-content[
+<div style="margin-top: 15px" class="asciicast" id="grounding-2-web" data-cols="110" data-rows="24" data-speed="8"></div>
+]
+
+???
+
+---
+
+# Test 3: allow the model to access an *LLM-Wiki*
+
+.boxed-content[
+<div style="margin-top: 15px" class="asciicast" id="grounding-3-wiki" data-speed="8"></div>
+]
+
+???
+
+---
+
+# Measured: grounding beats a bigger search (*n*=30)
+
+.boxed-content[
+<object type="image/svg+xml" data="images/qsiprep-grounding.svg" style="width: 100%; padding-top: 40pt;"></object>
+]
+
+
+???
+
+
+---
+template: title
+
+.center.middle.black[
+
+![](../remark/assets/ohbm2026-brain.png)
+![](../remark/assets/ohbm2026-wordmark.png)
+
+]
+
+???
+
+Thank you — happy to take questions, and the repos and skills are all linked from the QR
+on the title slide.
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
