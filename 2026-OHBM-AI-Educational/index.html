@@ -459,6 +459,41 @@ When modifying the S2 query logic, update the script — all skills benefit.
 
 ???
 
+---
+
+# Contributing back — the bug
+
+.boxed-content[
+.center[
+<img src="images/dipy-issue-4053.png" alt="DIPY issue #4053: multi_voxel_fit forwards orchestration kwargs into the per-voxel fit function" style="max-height: 540px; max-width: 100%; border: 1px solid #ddd; box-shadow: 0 3px 12px rgba(0,0,0,.18);" />
+]
+]
+
+???
+
+A real bug I hit in DIPY's diffusion code, filed as issue #4053. The honest part is the
+"Provenance" note at the top: I ran into this independently first, and Claude Code then
+diagnosed the root cause — and I say exactly that, on the issue. Disclosing how the work
+was done is part of contributing back responsibly.
+
+---
+
+# Contributing back — the fix (in review)
+
+.boxed-content[
+.center[
+<img src="images/dipy-pr-4054.png" alt="DIPY pull request #4054 by oesteban, fixing #4053, draft / in review, following strict TDD" style="max-height: 540px; max-width: 100%; border: 1px solid #ddd; box-shadow: 0 3px 12px rgba(0,0,0,.18);" />
+]
+]
+
+???
+
+The fix is PR #4054 — and note it is still a draft, in review, not merged: AI made the PR
+cheap, it did not make review cheap, and a human still owns that. The body discloses tool
+and model, links the issue, and follows strict TDD — a failing-tests-only commit first,
+then the patch — so a reviewer sees the bug before the fix. I found the bug; the agent
+helped diagnose and implement; I read and own every line.
+
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
     <script src="../remark/core/engine.js"></script>
